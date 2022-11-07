@@ -1,5 +1,5 @@
 <template>
-    <el-card class="box-card">
+    <el-card>
         <el-form label-width="70px">
             <el-form-item label="Login">
                 <el-input v-model="formInfo.login" />
@@ -39,17 +39,3 @@ const btnEnabled = computed(() => {
 
 const submit = () => console.log('login');
 </script>
-
-<style scoped>
-.text {
-    font-size: 14px;
-}
-
-.item {
-    padding: 18px 0;
-}
-
-.box-card {
-    width: 300px;
-}
-</style>
