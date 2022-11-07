@@ -1,43 +1,90 @@
 <template>
-    <ul class="menu">
-        <LogoIcon />
+    <div class="menu">
+        <div class="logo">
+            <LogoIcon />
+        </div>
 
-        <li>
-            <RouterLink to="/"> Страница 2 </RouterLink>
-        </li>
+        <ul class="menu-list">
+            <li>
+                <RouterLink to="/"> Страница 2 </RouterLink>
+            </li>
 
-        <li>
-            <div style="display: flex; align-items: center">
-                <div>Страница 3</div>
+            <li>
+                <div class="item-title" @click="toggle">
+                    <div>Страница 3</div>
 
-                <ArrowRight style="margin-left: 8px" />
-            </div>
+                    <ArrowRight class="arrow" />
+                </div>
 
-            <ul>
-                <li>
-                    <RouterLink to="/"> Страница 3-1 </RouterLink>
-                </li>
-            </ul>
-        </li>
-    </ul>
+                <ul class="nested-list" v-show="expanded">
+                    <li>
+                        <RouterLink to="/"> Страница 3-1 </RouterLink>
+                    </li>
+
+                    <li>
+                        <RouterLink to="/"> Страница 3-2 </RouterLink>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 import ArrowRight from '../icons/ArrowIcon.vue';
 import LogoIcon from '../icons/LogoIcon.vue';
+
+const expanded = ref(false);
+
+const toggle = () => {
+    expanded.value = !expanded.value;
+};
 </script>
 
 <style lang="scss">
 .menu {
-    background: $custom-black;
     padding: 38px 16px;
+}
+
+.logo {
+    text-align: center;
+}
+
+.arrow {
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.nested-list {
+    margin-left: 16px;
+    margin-top: 8px;
+
+    & li {
+        padding: 8px 0;
+    }
+}
+
+.item-title {
+    display: flex;
+    align-items: center;
+
+    & div {
+        cursor: pointer;
+    }
+}
+
+.menu-list {
+    background: $custom-black;
     color: #ffffff;
     width: auto;
     white-space: nowrap;
-
     display: flex;
     flex-direction: column;
-    align-items: center;
+
+    & li {
+        padding: 25px 0;
+    }
 
     & .el-icon,
     & a {
