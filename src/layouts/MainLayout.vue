@@ -10,6 +10,11 @@
     </div>
 </template>
 
+<script setup lang="ts">
+import TheHeader from '@/components/TheHeader.vue';
+import TheMenu from '@/components/TheMenu.vue';
+</script>
+
 <style lang="scss">
 .wrapper {
     background-color: $custom-black;

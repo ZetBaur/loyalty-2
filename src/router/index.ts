@@ -13,19 +13,17 @@ const router = createRouter({
                 layout: 'auth',
                 auth: false
             }
+        },
+
+        {
+            path: '/home',
+            name: 'home',
+            component: () => import('@/views/HomeView.vue'),
+            meta: {
+                layout: 'main',
+                auth: false
+            }
         }
-
-        // {
-        //     path: '/',
-        //     name: 'home',
-        //     component: HomeView
-        // }
-        // {
-        //     path: '/about',
-        //     name: 'about',
-
-        //     component: () => import('../views/AboutView.vue')
-        // }
     ]
 });
 
