@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import IconUser from './icons/IconUser.vue';
+import IconUser from './icons/UserIcon.vue';
 
 const logout = () => console.log('logout');
 </script>

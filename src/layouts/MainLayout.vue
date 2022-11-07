@@ -12,12 +12,12 @@
 
 <script setup lang="ts">
 import TheHeader from '@/components/TheHeader.vue';
-import TheMenu from '@/components/TheMenu.vue';
+import TheMenu from '@/components/TheMenu/TheMenu.vue';
 </script>
 
 <style lang="scss">
 .wrapper {
-    background-color: $custom-black;
+    background: $custom-black;
     min-height: 100vh;
     display: flex;
 }
