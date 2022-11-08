@@ -101,6 +101,7 @@ const emit = defineEmits<{
     display: flex;
     flex-direction: column;
     user-select: none;
+    margin-top: 25px;
 
     & li {
         padding: 25px 0;
@@ -113,6 +114,8 @@ const emit = defineEmits<{
 
     .open-menu-icon {
         width: 45px;
+        margin: 72px 0;
+        cursor: pointer;
     }
 }
 </style>
