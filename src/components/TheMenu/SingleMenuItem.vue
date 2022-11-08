@@ -2,7 +2,7 @@
     <li class="single-menu-item">
         <component :is="props.icon" class="icon" />
 
-        <RouterLink :to="props.path">
+        <RouterLink :to="props.path" v-if="props.menuIsExpanded">
             {{ props.link }}
         </RouterLink>
     </li>
@@ -15,6 +15,7 @@ const props = defineProps<{
     link: string;
     path: string;
     icon: string;
+    menuIsExpanded: boolean;
 }>();
 </script>
 

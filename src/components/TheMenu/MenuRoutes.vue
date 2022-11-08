@@ -1,6 +1,11 @@
 <template>
     <ul class="menu-list">
-        <!-- <SingleMenuItem link="Страница 1" path="/" icon="Microphone" /> -->
+        <SingleMenuItem
+            link="Страница 1"
+            path="/"
+            icon="Microphone"
+            :menuIsExpanded="props.menuIsExpanded"
+        />
 
         <MenuItems
             itemName="Конфигурация детекторов"
@@ -18,7 +23,7 @@
                 }
             ]"
         />
-        <!-- 
+
         <MenuItems
             itemName="Вкладка 2"
             icon="Microphone"
@@ -34,7 +39,7 @@
                     path: '/page2'
                 }
             ]"
-        /> -->
+        />
 
         <OpenMenuIcon @click="emit('expandMenu')" />
     </ul>
@@ -44,7 +49,7 @@
 // import { ref } from 'vue';
 import OpenMenuIcon from '../icons/OpenMenuIcon.vue';
 import MenuItems from './MenuItems.vue';
-// import SingleMenuItem from './SingleMenuItem.vue';
+import SingleMenuItem from './SingleMenuItem.vue';
 
 const props = defineProps<{
     menuIsExpanded: boolean;
