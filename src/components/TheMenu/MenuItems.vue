@@ -3,7 +3,36 @@
         <div class="item-title" @click="toggle">
             <component :is="props.icon" class="icon" v-if="menuIsExpanded" />
 
-            <component :is="props.icon" v-else class="not-expand-icon" />
+            <el-tooltip v-else placement="right">
+                <template #content>
+                    <div class="popover">
+                        <RouterLink
+                            v-for="el in links"
+                            :key="el.link"
+                            :to="el.path"
+                        >
+                            {{ el.link }}
+                        </RouterLink>
+                    </div>
+                </template>
+                <component :is="props.icon" class="not-expand-icon" />
+            </el-tooltip>
+
+            <!-- <el-popover :width="300" placement="right">
+                <template #reference>
+                    <component :is="props.icon" class="not-expand-icon" />
+                </template>
+
+                <div class="popover">
+                    <RouterLink
+                        v-for="el in links"
+                        :key="el.link"
+                        :to="el.path"
+                    >
+                        {{ el.link }}
+                    </RouterLink>
+                </div>
+            </el-popover> -->
 
             <div v-if="menuIsExpanded">{{ props.itemName }}</div>
 
@@ -85,5 +114,25 @@ const toggle = () => {
 
 .not-expand-icon {
     width: 45px;
+    cursor: pointer;
+
+    &:hover {
+        color: #f50f64;
+    }
+}
+
+.popover {
+    display: flex;
+    flex-direction: column;
+
+    & a {
+        font-size: 14px;
+        color: #ffffff;
+        margin: 8px;
+
+        &:hover {
+            color: #f50f64;
+        }
+    }
 }
 </style>
