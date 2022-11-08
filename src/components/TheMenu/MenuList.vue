@@ -3,12 +3,27 @@
         <SingleMenuItem link="Страница 1" path="/" />
 
         <MenuItems
-            itemName="Страница 2"
+            itemName="Вкладка 1"
             path="/"
             :links="[
                 {
                     link: 'Страница 2-1',
                     path: '/page'
+                },
+                {
+                    link: 'Страница 2-2',
+                    path: '/page2'
+                }
+            ]"
+        />
+
+        <MenuItems
+            itemName="Вкладка 2"
+            path="/"
+            :links="[
+                {
+                    link: 'Страница Test',
+                    path: '/test'
                 },
                 {
                     link: 'Страница 2-2',

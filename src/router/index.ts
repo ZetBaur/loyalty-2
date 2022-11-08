@@ -23,6 +23,16 @@ const router = createRouter({
                 layout: 'main',
                 auth: false
             }
+        },
+
+        {
+            path: '/test',
+            name: 'test',
+            component: () => import('@/views/TestPage.vue'),
+            meta: {
+                layout: 'main',
+                auth: false
+            }
         }
     ]
 });
