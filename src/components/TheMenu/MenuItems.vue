@@ -1,22 +1,14 @@
 <template>
     <li>
-        <RouterLink to="/"> Страница 2 </RouterLink>
-    </li>
-
-    <li>
         <div class="item-title" @click="toggle">
-            <div>Страница 3</div>
+            <div>{{ props.itemName }}</div>
 
             <ArrowIcon class="arrow" :class="{ expanded: expanded }" />
         </div>
 
         <ul class="nested-list" v-if="expanded">
-            <li>
-                <RouterLink to="/"> Страница 3-1 </RouterLink>
-            </li>
-
-            <li>
-                <RouterLink to="/"> Страница 3-2 </RouterLink>
+            <li v-for="el in links" :key="el.link">
+                <RouterLink :to="el.path"> {{ el.link }} </RouterLink>
             </li>
         </ul>
     </li>
@@ -26,6 +18,18 @@
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import ArrowIcon from '../icons/ArrowIcon.vue';
+
+interface Ilinks {
+    link: string;
+    path: string;
+}
+
+const props = defineProps<{
+    itemName: string;
+    path: string;
+
+    links: Array<Ilinks>;
+}>();
 
 const expanded = ref(false);
 
