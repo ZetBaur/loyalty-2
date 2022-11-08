@@ -5,7 +5,9 @@
         </div>
 
         <ul class="menu-list">
-            <li>
+            <MenuItem />
+
+            <!-- <li>
                 <RouterLink to="/"> Страница 2 </RouterLink>
             </li>
 
@@ -25,59 +27,24 @@
                         <RouterLink to="/"> Страница 3-2 </RouterLink>
                     </li>
                 </ul>
-            </li>
+            </li> -->
         </ul>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import ArrowIcon from '../icons/ArrowIcon.vue';
+import MenuItem from './MenuItem.vue';
 import LogoIcon from '../icons/LogoIcon.vue';
-
-const expanded = ref(false);
-
-const toggle = () => {
-    expanded.value = !expanded.value;
-};
 </script>
 
 <style lang="scss">
 .menu {
     padding: 38px 16px;
-    width: 200px;
+    width: 250px;
 }
 
 .logo {
     text-align: center;
-}
-
-.arrow {
-    margin-left: 8px;
-    cursor: pointer;
-
-    transform: rotate(-90deg);
-}
-
-.expanded {
-    transform: rotate(0);
-}
-
-.nested-list {
-    margin: 8px 0 0 16px;
-
-    & li {
-        padding: 8px 0 !important;
-    }
-}
-
-.item-title {
-    display: flex;
-    align-items: center;
-
-    & div {
-        cursor: pointer;
-    }
 }
 
 .menu-list {
