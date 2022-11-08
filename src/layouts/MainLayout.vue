@@ -30,6 +30,7 @@ import TheAside from '@/components/TheMenu/TheAside.vue';
     width: 100%;
     padding: 20px;
     background: white;
+    margin-left: 77px;
 }
 
 .content {
