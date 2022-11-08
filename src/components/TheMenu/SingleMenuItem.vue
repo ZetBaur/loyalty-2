@@ -2,7 +2,19 @@
     <li class="single-menu-item">
         <component :is="props.icon" class="icon" v-if="menuIsExpanded" />
 
-        <component v-else :is="props.icon" class="not-expand-icon" />
+        <el-tooltip v-else placement="right">
+            <template #content>
+                <div class="popover">
+                    <RouterLink :to="props.path">
+                        {{ props.link }}
+                    </RouterLink>
+                </div>
+            </template>
+
+            <component :is="props.icon" class="not-expand-icon" />
+        </el-tooltip>
+
+        <!-- <component v-else :is="props.icon" class="not-expand-icon" /> -->
 
         <RouterLink :to="props.path" v-if="props.menuIsExpanded">
             {{ props.link }}

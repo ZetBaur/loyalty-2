@@ -18,22 +18,6 @@
                 <component :is="props.icon" class="not-expand-icon" />
             </el-tooltip>
 
-            <!-- <el-popover :width="300" placement="right">
-                <template #reference>
-                    <component :is="props.icon" class="not-expand-icon" />
-                </template>
-
-                <div class="popover">
-                    <RouterLink
-                        v-for="el in links"
-                        :key="el.link"
-                        :to="el.path"
-                    >
-                        {{ el.link }}
-                    </RouterLink>
-                </div>
-            </el-popover> -->
-
             <div v-if="menuIsExpanded">{{ props.itemName }}</div>
 
             <ArrowIcon
