@@ -1,9 +1,10 @@
 <template>
     <ul class="menu-list">
-        <SingleMenuItem link="Страница 1" path="/" />
+        <SingleMenuItem link="Страница 1" path="/" icon="Microphone" />
 
         <MenuItems
             itemName="Вкладка 1"
+            icon="Discount"
             path="/"
             :links="[
                 {
@@ -19,6 +20,7 @@
 
         <MenuItems
             itemName="Вкладка 2"
+            icon="Microphone"
             path="/"
             :links="[
                 {

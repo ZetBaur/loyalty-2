@@ -1,11 +1,7 @@
 <template>
     <li>
         <div class="item-title" @click="toggle">
-            <!-- <TestIcon style="margin-right: 16px" /> -->
-
-            <!-- <el-icon><Discount /></el-icon> -->
-
-            <component :is="'Discount'" style="margin-right: 16px" />
+            <component :is="props.icon" class="icon" />
 
             <div>{{ props.itemName }}</div>
 
@@ -24,7 +20,6 @@
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import ArrowIcon from '../icons/ArrowIcon.vue';
-import TestIcon from '../icons/TestIcon.vue';
 
 interface Ilinks {
     link: string;
@@ -34,6 +29,7 @@ interface Ilinks {
 const props = defineProps<{
     itemName: string;
     path: string;
+    icon: string;
 
     links: Array<Ilinks>;
 }>();
@@ -58,7 +54,7 @@ const toggle = () => {
 }
 
 .nested-list {
-    margin: 8px 0 0 16px;
+    margin: 8px 0 0 42px;
 
     & li {
         padding: 8px 0 !important;
@@ -72,5 +68,10 @@ const toggle = () => {
     & div {
         cursor: pointer;
     }
+}
+
+.icon {
+    margin-right: 16px;
+    width: 20px;
 }
 </style>
