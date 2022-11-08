@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <TheMenu />
+        <TheAside />
 
         <div class="main">
             <TheHeader />
@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
 import TheHeader from '@/components/TheHeader.vue';
-import TheMenu from '@/components/TheMenu/TheMenu.vue';
+import TheAside from '@/components/TheMenu/TheAside.vue';
 </script>
 
 <style lang="scss">

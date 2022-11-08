@@ -1,20 +1,20 @@
 <template>
-    <div class="menu">
+    <div class="aside">
         <div class="logo">
             <LogoIcon />
         </div>
 
-        <MenuList />
+        <MenuRoutes />
     </div>
 </template>
 
 <script setup lang="ts">
 import LogoIcon from '../icons/LogoIcon.vue';
-import MenuList from './MenuList.vue';
+import MenuRoutes from './MenuRoutes.vue';
 </script>
 
 <style lang="scss">
-.menu {
+.aside {
     padding: 38px 16px;
     width: 250px;
 }
