@@ -13,10 +13,10 @@
                 <div class="item-title" @click="toggle">
                     <div>Страница 3</div>
 
-                    <ArrowRight class="arrow" />
+                    <ArrowIcon class="arrow" :class="{ expanded: expanded }" />
                 </div>
 
-                <ul class="nested-list" v-show="expanded">
+                <ul class="nested-list">
                     <li>
                         <RouterLink to="/"> Страница 3-1 </RouterLink>
                     </li>
@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import ArrowRight from '../icons/ArrowIcon.vue';
+import ArrowIcon from '../icons/ArrowIcon.vue';
 import LogoIcon from '../icons/LogoIcon.vue';
 
 const expanded = ref(false);
@@ -54,6 +54,12 @@ const toggle = () => {
 .arrow {
     margin-left: 8px;
     cursor: pointer;
+
+    transform: rotate(-90deg);
+
+    & .expanded {
+        transform: rotate(0);
+    }
 }
 
 .nested-list {
