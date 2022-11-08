@@ -16,7 +16,7 @@
                     <ArrowIcon class="arrow" :class="{ expanded: expanded }" />
                 </div>
 
-                <ul class="nested-list">
+                <ul class="nested-list" v-if="expanded">
                     <li>
                         <RouterLink to="/"> Страница 3-1 </RouterLink>
                     </li>
@@ -45,6 +45,7 @@ const toggle = () => {
 <style lang="scss">
 .menu {
     padding: 38px 16px;
+    width: 200px;
 }
 
 .logo {
@@ -56,18 +57,17 @@ const toggle = () => {
     cursor: pointer;
 
     transform: rotate(-90deg);
+}
 
-    & .expanded {
-        transform: rotate(0);
-    }
+.expanded {
+    transform: rotate(0);
 }
 
 .nested-list {
     margin-left: 16px;
-    margin-top: 8px;
 
-    & li {
-        padding: 8px 0;
+    &li {
+        padding: 4px 0;
     }
 }
 
