@@ -1,5 +1,7 @@
 <template>
-    <li>
+    <li style="display: flex; align-items: center">
+        <TestIcon style="margin-right: 16px" />
+
         <RouterLink :to="props.path">
             {{ props.link }}
         </RouterLink>
@@ -8,6 +10,7 @@
 
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
+import TestIcon from '../icons/TestIcon.vue';
 
 const props = defineProps<{
     link: string;

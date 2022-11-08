@@ -1,6 +1,12 @@
 <template>
     <li>
         <div class="item-title" @click="toggle">
+            <!-- <TestIcon style="margin-right: 16px" /> -->
+
+            <!-- <el-icon><Discount /></el-icon> -->
+
+            <component :is="'Discount'" style="margin-right: 16px" />
+
             <div>{{ props.itemName }}</div>
 
             <ArrowIcon class="arrow" :class="{ expanded: expanded }" />
@@ -18,6 +24,7 @@
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import ArrowIcon from '../icons/ArrowIcon.vue';
+import TestIcon from '../icons/TestIcon.vue';
 
 interface Ilinks {
     link: string;
