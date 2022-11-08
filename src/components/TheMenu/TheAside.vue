@@ -28,7 +28,7 @@ const expandMenu = () => {
 <style lang="scss">
 .aside {
     padding: 38px 16px;
-    width: 70px;
+    width: 85px;
     position: fixed;
     background: $custom-black;
     min-height: 100%;

@@ -1,7 +1,9 @@
 <template>
     <li>
         <div class="item-title" @click="toggle">
-            <component :is="props.icon" class="icon" />
+            <component :is="props.icon" class="icon" v-if="menuIsExpanded" />
+
+            <component v-else :is="props.icon" class="not-expand-icon" />
 
             <div v-if="menuIsExpanded">{{ props.itemName }}</div>
 
@@ -78,6 +80,10 @@ const toggle = () => {
 
 .icon {
     margin-right: 16px;
-    width: 20px;
+    width: 45px;
+}
+
+.not-expand-icon {
+    width: 45px;
 }
 </style>

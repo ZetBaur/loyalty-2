@@ -41,7 +41,7 @@
             ]"
         />
 
-        <OpenMenuIcon @click="emit('expandMenu')" />
+        <OpenMenuIcon class="open-menu-icon" @click="emit('expandMenu')" />
     </ul>
 </template>
 
@@ -83,6 +83,10 @@ const emit = defineEmits<{
     & .el-icon,
     & a {
         color: #ffffff;
+    }
+
+    .open-menu-icon {
+        width: 45px;
     }
 }
 </style>

@@ -1,6 +1,8 @@
 <template>
     <li class="single-menu-item">
-        <component :is="props.icon" class="icon" />
+        <component :is="props.icon" class="icon" v-if="menuIsExpanded" />
+
+        <component v-else :is="props.icon" class="not-expand-icon" />
 
         <RouterLink :to="props.path" v-if="props.menuIsExpanded">
             {{ props.link }}
