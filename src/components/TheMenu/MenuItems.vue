@@ -3,7 +3,7 @@
         <div class="item-title" @click="toggle">
             <component :is="props.icon" class="icon" v-if="menuIsExpanded" />
 
-            <component v-else :is="props.icon" class="not-expand-icon" />
+            <component :is="props.icon" v-else class="not-expand-icon" />
 
             <div v-if="menuIsExpanded">{{ props.itemName }}</div>
 

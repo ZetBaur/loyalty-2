@@ -1,6 +1,6 @@
 <template>
     <div class="aside" :class="{ 'menu-expanded': menuIsExpanded }">
-        <div class="logo">
+        <div>
             <LogoIcon />
         </div>
 
@@ -28,18 +28,13 @@ const expandMenu = () => {
 <style lang="scss">
 .aside {
     padding: 38px 16px;
-    width: 85px;
+    width: 77px;
     position: fixed;
     background: $custom-black;
     min-height: 100%;
 }
 
 .menu-expanded {
-    transform: translateX(0);
     width: 300px;
-}
-
-.logo {
-    text-align: center;
 }
 </style>

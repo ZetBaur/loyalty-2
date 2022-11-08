@@ -26,6 +26,23 @@
 
         <MenuItems
             itemName="Вкладка 2"
+            icon="Discount"
+            :menuIsExpanded="props.menuIsExpanded"
+            path="/"
+            :links="[
+                {
+                    link: 'Страница Test',
+                    path: '/test'
+                },
+                {
+                    link: 'Страница 2-2',
+                    path: '/page2'
+                }
+            ]"
+        />
+
+        <MenuItems
+            itemName="Вкладка 2"
             icon="Microphone"
             :menuIsExpanded="props.menuIsExpanded"
             path="/"
@@ -58,12 +75,6 @@ const props = defineProps<{
 const emit = defineEmits<{
     (e: 'expandMenu'): void;
 }>();
-
-// const menuIsOpen = ref(false);
-
-// const openMenu = () => {
-//     console.log('openMenu');
-// };
 </script>
 
 <style lang="scss">
