@@ -1,10 +1,11 @@
 <template>
     <ul class="menu-list">
-        <SingleMenuItem link="Страница 1" path="/" icon="Microphone" />
+        <!-- <SingleMenuItem link="Страница 1" path="/" icon="Microphone" /> -->
 
         <MenuItems
             itemName="Конфигурация детекторов"
             icon="Discount"
+            :menuIsExpanded="props.menuIsExpanded"
             path="/"
             :links="[
                 {
@@ -17,10 +18,11 @@
                 }
             ]"
         />
-
+        <!-- 
         <MenuItems
             itemName="Вкладка 2"
             icon="Microphone"
+            :menuIsExpanded="props.menuIsExpanded"
             path="/"
             :links="[
                 {
@@ -32,13 +34,31 @@
                     path: '/page2'
                 }
             ]"
-        />
+        /> -->
+
+        <OpenMenuIcon @click="emit('expandMenu')" />
     </ul>
 </template>
 
 <script setup lang="ts">
+// import { ref } from 'vue';
+import OpenMenuIcon from '../icons/OpenMenuIcon.vue';
 import MenuItems from './MenuItems.vue';
-import SingleMenuItem from './SingleMenuItem.vue';
+// import SingleMenuItem from './SingleMenuItem.vue';
+
+const props = defineProps<{
+    menuIsExpanded: boolean;
+}>();
+
+const emit = defineEmits<{
+    (e: 'expandMenu'): void;
+}>();
+
+// const menuIsOpen = ref(false);
+
+// const openMenu = () => {
+//     console.log('openMenu');
+// };
 </script>
 
 <style lang="scss">

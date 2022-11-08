@@ -3,12 +3,16 @@
         <div class="item-title" @click="toggle">
             <component :is="props.icon" class="icon" />
 
-            <div>{{ props.itemName }}</div>
+            <div v-if="menuIsExpanded">{{ props.itemName }}</div>
 
-            <ArrowIcon class="arrow" :class="{ droppedDown: droppedDown }" />
+            <ArrowIcon
+                v-if="menuIsExpanded"
+                class="arrow"
+                :class="{ droppedDown: droppedDown }"
+            />
         </div>
 
-        <ul class="nested-list" v-if="droppedDown">
+        <ul class="nested-list" v-if="droppedDown && menuIsExpanded">
             <li v-for="el in links" :key="el.link">
                 <RouterLink :to="el.path"> {{ el.link }} </RouterLink>
             </li>
@@ -30,6 +34,8 @@ const props = defineProps<{
     itemName: string;
     path: string;
     icon: string;
+
+    menuIsExpanded: boolean;
 
     links: Array<Ilinks>;
 }>();
