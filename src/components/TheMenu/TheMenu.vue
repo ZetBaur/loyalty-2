@@ -64,10 +64,10 @@ const toggle = () => {
 }
 
 .nested-list {
-    margin-left: 16px;
+    margin: 8px 0 0 16px;
 
-    &li {
-        padding: 4px 0;
+    & li {
+        padding: 8px 0 !important;
     }
 }
 
