@@ -5,10 +5,10 @@
 
             <div>{{ props.itemName }}</div>
 
-            <ArrowIcon class="arrow" :class="{ expanded: expanded }" />
+            <ArrowIcon class="arrow" :class="{ droppedDown: droppedDown }" />
         </div>
 
-        <ul class="nested-list" v-if="expanded">
+        <ul class="nested-list" v-if="droppedDown">
             <li v-for="el in links" :key="el.link">
                 <RouterLink :to="el.path"> {{ el.link }} </RouterLink>
             </li>
@@ -34,10 +34,10 @@ const props = defineProps<{
     links: Array<Ilinks>;
 }>();
 
-const expanded = ref(false);
+const droppedDown = ref(false);
 
 const toggle = () => {
-    expanded.value = !expanded.value;
+    droppedDown.value = !droppedDown.value;
 };
 </script>
 
@@ -49,12 +49,12 @@ const toggle = () => {
     transform: rotate(-90deg);
 }
 
-.expanded {
+.droppedDown {
     transform: rotate(0);
 }
 
 .nested-list {
-    margin: 8px 0 0 42px;
+    margin: 8px 0 0 64px;
 
     & li {
         padding: 8px 0 !important;

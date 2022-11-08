@@ -3,7 +3,7 @@
         <SingleMenuItem link="Страница 1" path="/" icon="Microphone" />
 
         <MenuItems
-            itemName="Вкладка 1"
+            itemName="Конфигурация детекторов"
             icon="Discount"
             path="/"
             :links="[
