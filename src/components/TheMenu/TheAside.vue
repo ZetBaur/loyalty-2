@@ -7,21 +7,17 @@
         <MenuRoutes
             @expand-menu="expandMenu"
             :menuIsExpanded="menuIsExpanded"
+            @close-menu="menuIsExpanded = false"
             ref="target"
         />
     </div>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
+import { ref } from 'vue';
 import LogoIcon from '../icons/LogoIcon.vue';
 import MenuRoutes from './MenuRoutes.vue';
 import { onClickOutside } from '@vueuse/core';
-import { useRoute } from 'vue-router';
-
-const route = useRoute();
-
-const currentPath = computed(() => route.fullPath);
 
 const target = ref(null);
 
@@ -30,17 +26,6 @@ const menuIsExpanded = ref(false);
 onClickOutside(target, () => (menuIsExpanded.value = false));
 
 const expandMenu = () => (menuIsExpanded.value = !menuIsExpanded.value);
-
-watch(
-    () => currentPath.value,
-    (newValue, oldValue) => {
-        console.log(newValue);
-        console.log(oldValue);
-
-        if (newValue !== oldValue) menuIsExpanded.value = false;
-    },
-    { deep: true }
-);
 </script>
 
 <style lang="scss">

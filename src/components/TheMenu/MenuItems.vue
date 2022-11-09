@@ -30,8 +30,6 @@
         <ul class="nested-list" v-if="droppedDown && menuIsExpanded">
             <li v-for="el in links" :key="el.link">
                 <span @click="linkHandler(el.path)">{{ el.link }}</span>
-
-                <!-- <RouterLink :to="el.path"> {{ el.link }} </RouterLink> -->
             </li>
         </ul>
     </li>
@@ -58,18 +56,16 @@ const props = defineProps<{
     links: Array<Ilinks>;
 }>();
 
-// const emit = defineEmits<{
-//     (e: 'closeMenu'): void;
-// }>();
+const emit = defineEmits<{
+    (e: 'closeMenu'): void;
+}>();
 
 const router = useRouter();
 
 const droppedDown = ref(false);
 
 const linkHandler = (path: string) => {
-    // console.log(path);
-
-    // emit('closeMenu');
+    emit('closeMenu');
 
     router.push(path);
 };

@@ -1,48 +1,18 @@
 <template>
     <ul class="menu-list">
         <SingleMenuItem
-            link="Страница 1"
-            path="/"
+            link="Test Page"
+            path="/test"
             icon="Microphone"
             :menuIsExpanded="props.menuIsExpanded"
-        />
-
-        <MenuItems
-            itemName="Конфигурация детекторов"
-            icon="Discount"
-            :menuIsExpanded="props.menuIsExpanded"
-            path="/"
-            :links="[
-                {
-                    link: 'Страница 2-1',
-                    path: '/page'
-                },
-                {
-                    link: 'Страница 2-2',
-                    path: '/page2'
-                },
-
-                {
-                    link: 'Статистика транзакций',
-                    path: '/page2'
-                },
-
-                {
-                    link: 'Страница 2-2',
-                    path: '/page2'
-                },
-
-                {
-                    link: 'Страница 2-2',
-                    path: '/page2'
-                }
-            ]"
+            @close-menu="emit('closeMenu')"
         />
 
         <MenuItems
             itemName="Вкладка 2"
             icon="Discount"
             :menuIsExpanded="props.menuIsExpanded"
+            @close-menu="emit('closeMenu')"
             path="/"
             :links="[
                 {
@@ -56,29 +26,11 @@
             ]"
         />
 
-        <MenuItems
-            itemName="Вкладка 2"
-            icon="Microphone"
-            :menuIsExpanded="props.menuIsExpanded"
-            path="/"
-            :links="[
-                {
-                    link: 'Страница Test',
-                    path: '/test'
-                },
-                {
-                    link: 'Страница 2-2',
-                    path: '/page2'
-                }
-            ]"
-        />
-
         <OpenMenuIcon class="open-menu-icon" @click="emit('expandMenu')" />
     </ul>
 </template>
 
 <script setup lang="ts">
-// import { ref } from 'vue';
 import OpenMenuIcon from '../icons/OpenMenuIcon.vue';
 import MenuItems from './MenuItems.vue';
 import SingleMenuItem from './SingleMenuItem.vue';
@@ -89,6 +41,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
     (e: 'expandMenu'): void;
+    (e: 'closeMenu'): void;
 }>();
 </script>
 

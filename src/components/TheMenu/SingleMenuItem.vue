@@ -14,16 +14,14 @@
             <component :is="props.icon" class="not-expand-icon" />
         </el-tooltip>
 
-        <!-- <component v-else :is="props.icon" class="not-expand-icon" /> -->
-
-        <RouterLink :to="props.path" v-if="props.menuIsExpanded">
-            {{ props.link }}
-        </RouterLink>
+        <span v-if="props.menuIsExpanded" @click="linkHandler(props.path)">{{
+            props.link
+        }}</span>
     </li>
 </template>
 
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
 
 const props = defineProps<{
     link: string;
@@ -31,11 +29,33 @@ const props = defineProps<{
     icon: string;
     menuIsExpanded: boolean;
 }>();
+
+const emit = defineEmits<{
+    (e: 'closeMenu'): void;
+}>();
+
+const router = useRouter();
+
+const linkHandler = (path: string) => {
+    console.log(path);
+
+    emit('closeMenu');
+
+    router.push(path);
+};
 </script>
 
 <style lang="scss">
 .single-menu-item {
     display: flex;
     align-items: center;
+
+    & span {
+        cursor: pointer;
+
+        &:hover {
+            color: #f50f64;
+        }
+    }
 }
 </style>
