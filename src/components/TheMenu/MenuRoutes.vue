@@ -50,8 +50,8 @@
                     path: '/test'
                 },
                 {
-                    link: 'Страница 2-2',
-                    path: '/page2'
+                    link: 'Главная страница',
+                    path: '/home'
                 }
             ]"
         />

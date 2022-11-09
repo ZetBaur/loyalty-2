@@ -29,7 +29,9 @@
 
         <ul class="nested-list" v-if="droppedDown && menuIsExpanded">
             <li v-for="el in links" :key="el.link">
-                <RouterLink :to="el.path"> {{ el.link }} </RouterLink>
+                <span @click="linkHandler(el.path)">{{ el.link }}</span>
+
+                <!-- <RouterLink :to="el.path"> {{ el.link }} </RouterLink> -->
             </li>
         </ul>
     </li>
@@ -39,6 +41,7 @@
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import ArrowIcon from '../icons/ArrowIcon.vue';
+import { useRouter } from 'vue-router';
 
 interface Ilinks {
     link: string;
@@ -55,7 +58,21 @@ const props = defineProps<{
     links: Array<Ilinks>;
 }>();
 
+// const emit = defineEmits<{
+//     (e: 'closeMenu'): void;
+// }>();
+
+const router = useRouter();
+
 const droppedDown = ref(false);
+
+const linkHandler = (path: string) => {
+    // console.log(path);
+
+    // emit('closeMenu');
+
+    router.push(path);
+};
 
 const toggle = () => {
     droppedDown.value = !droppedDown.value;
@@ -81,7 +98,8 @@ const toggle = () => {
         padding: 8px 0 !important;
     }
 
-    & a {
+    & span {
+        cursor: pointer;
         &:hover {
             color: #f50f64;
         }

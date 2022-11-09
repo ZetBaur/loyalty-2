@@ -13,10 +13,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import LogoIcon from '../icons/LogoIcon.vue';
 import MenuRoutes from './MenuRoutes.vue';
 import { onClickOutside } from '@vueuse/core';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+
+// const currentPath = ref(route.fullPath);
+
+const currentPath = computed(() => route.fullPath);
+
+console.log('currentPath', currentPath.value);
 
 const target = ref(null);
 
@@ -24,11 +33,18 @@ const menuIsExpanded = ref(false);
 
 onClickOutside(target, () => (menuIsExpanded.value = false));
 
-const expandMenu = () => {
-    console.log('expandMenu');
+const expandMenu = () => (menuIsExpanded.value = !menuIsExpanded.value);
 
-    menuIsExpanded.value = !menuIsExpanded.value;
-};
+watch(
+    () => currentPath.value,
+    (newValue, oldValue) => {
+        console.log(newValue);
+        console.log(oldValue);
+
+        if (newValue !== oldValue) menuIsExpanded.value = false;
+    },
+    { deep: true }
+);
 </script>
 
 <style lang="scss">
