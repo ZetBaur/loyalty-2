@@ -37,8 +37,6 @@ const emit = defineEmits<{
 const router = useRouter();
 
 const linkHandler = (path: string) => {
-    console.log(path);
-
     emit('closeMenu');
 
     router.push(path);
