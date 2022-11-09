@@ -21,11 +21,7 @@ import { useRoute } from 'vue-router';
 
 const route = useRoute();
 
-// const currentPath = ref(route.fullPath);
-
 const currentPath = computed(() => route.fullPath);
-
-console.log('currentPath', currentPath.value);
 
 const target = ref(null);
 
