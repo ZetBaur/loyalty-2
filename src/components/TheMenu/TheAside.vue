@@ -38,7 +38,7 @@ const expandMenu = () => {
     position: fixed;
     background: $custom-black;
     min-height: 100%;
-    transition: all 400ms ease-in-out;
+    transition: all 400ms;
 }
 
 .menu-expanded {
