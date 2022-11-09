@@ -35,14 +35,20 @@ import OpenMenuIcon from '../icons/OpenMenuIcon.vue';
 import MenuItems from './MenuItems.vue';
 import SingleMenuItem from './SingleMenuItem.vue';
 
+//-------------
+
 const props = defineProps<{
     menuIsExpanded: boolean;
 }>();
+
+//-------------
 
 const emit = defineEmits<{
     (e: 'expandMenu'): void;
     (e: 'closeMenu'): void;
 }>();
+
+//-------------
 </script>
 
 <style lang="scss">

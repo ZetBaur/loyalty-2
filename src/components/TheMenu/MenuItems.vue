@@ -50,9 +50,7 @@ const props = defineProps<{
     itemName: string;
     path: string;
     icon: string;
-
     menuIsExpanded: boolean;
-
     links: Array<Ilinks>;
 }>();
 
@@ -66,13 +64,10 @@ const droppedDown = ref(false);
 
 const linkHandler = (path: string) => {
     emit('closeMenu');
-
     router.push(path);
 };
 
-const toggle = () => {
-    droppedDown.value = !droppedDown.value;
-};
+const toggle = () => (droppedDown.value = !droppedDown.value);
 </script>
 
 <style lang="scss">
