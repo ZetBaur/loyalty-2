@@ -2,7 +2,7 @@
     <li class="single-menu-item">
         <component :is="props.icon" class="icon" v-if="menuIsExpanded" />
 
-        <el-tooltip v-else placement="right">
+        <el-tooltip v-else placement="right" effect="light">
             <template #content>
                 <div class="popover">
                     <RouterLink :to="props.path">

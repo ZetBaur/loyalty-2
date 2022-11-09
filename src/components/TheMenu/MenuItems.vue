@@ -3,7 +3,7 @@
         <div class="item-title" @click="toggle">
             <component :is="props.icon" class="icon" v-if="menuIsExpanded" />
 
-            <el-tooltip v-else placement="right">
+            <el-tooltip v-else placement="right" effect="light">
                 <template #content>
                     <div class="popover">
                         <RouterLink
@@ -80,6 +80,12 @@ const toggle = () => {
     & li {
         padding: 8px 0 !important;
     }
+
+    & a {
+        &:hover {
+            color: #f50f64;
+        }
+    }
 }
 
 .item-title {
@@ -110,9 +116,9 @@ const toggle = () => {
     flex-direction: column;
 
     & a {
-        font-size: 14px;
-        color: #ffffff;
-        margin: 8px;
+        font-size: 18px;
+        color: black;
+        padding: 8px;
 
         &:hover {
             color: #f50f64;
