@@ -9,7 +9,7 @@
         />
 
         <MultiMenuItems
-            itemName="Вкладка 2"
+            itemName="Кампании"
             icon="Discount"
             :menuIsExpanded="props.menuIsExpanded"
             @close-menu="emit('closeMenu')"
@@ -20,8 +20,8 @@
                     path: '/test'
                 },
                 {
-                    link: 'Страница Home',
-                    path: '/home'
+                    link: 'Кампании',
+                    path: '/campaigns'
                 }
             ]"
         />

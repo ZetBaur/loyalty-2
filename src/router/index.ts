@@ -16,9 +16,9 @@ const router = createRouter({
         },
 
         {
-            path: '/home',
-            name: 'home',
-            component: () => import('@/views/HomeView.vue'),
+            path: '/campaigns',
+            name: 'campaigns',
+            component: () => import('@/views/CampaignsPage.vue'),
             meta: {
                 layout: 'main',
                 auth: false
