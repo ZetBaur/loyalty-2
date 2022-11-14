@@ -23,10 +23,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-// import { useLoginStore } from '@/stores/auth/loginStore';
 import { computed } from 'vue';
-
-// const loginStore = useLoginStore();
 
 const formInfo = ref({
     login: '',

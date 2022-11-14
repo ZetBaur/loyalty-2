@@ -1,7 +1,7 @@
 <template>
     <ul class="menu-list">
         <SingleMenuItem
-            link="Test Page"
+            link="Страница Test"
             path="/test"
             icon="Microphone"
             :menuIsExpanded="props.menuIsExpanded"
@@ -20,7 +20,7 @@
                     path: '/test'
                 },
                 {
-                    link: 'Главная страница',
+                    link: 'Страница Home',
                     path: '/home'
                 }
             ]"
