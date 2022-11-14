@@ -8,7 +8,7 @@
             @close-menu="emit('closeMenu')"
         />
 
-        <MenuItems
+        <MultyMenuItems
             itemName="Вкладка 2"
             icon="Discount"
             :menuIsExpanded="props.menuIsExpanded"
@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import OpenMenuIcon from '../icons/OpenMenuIcon.vue';
-import MenuItems from './MenuItems.vue';
+import MultyMenuItems from './MultyMenuItems.vue';
 import SingleMenuItem from './SingleMenuItem.vue';
 
 //-------------
