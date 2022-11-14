@@ -35,6 +35,7 @@ const expandMenu = () => (menuIsExpanded.value = !menuIsExpanded.value);
     position: fixed;
     background: $custom-black;
     min-height: 100%;
+    z-index: 10;
 }
 
 .menu-expanded {

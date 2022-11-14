@@ -1,5 +1,7 @@
 <template>
     <div class="custom-toolbar">
+        <BaseButton @click-event="click" text="Фильтр" :icon="'Filter'" />
+
         <el-button
             v-if="props.filter"
             class="filter-button"
@@ -49,6 +51,7 @@
 <script setup lang="ts">
 import { Filter, Operation, Search, Plus } from '@element-plus/icons-vue';
 import { ref } from 'vue';
+import BaseButton from './ui/BaseButton.vue';
 
 const props = defineProps<{
     filter?: boolean;
@@ -64,6 +67,8 @@ const emit = defineEmits<{
     (e: 'createEvent'): void;
     (e: 'searchEvent', value: string): void;
 }>();
+
+const click = (e: Event) => console.log('click', e);
 
 const search = ref('');
 
