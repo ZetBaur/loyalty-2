@@ -13,7 +13,7 @@
 
     <br />
 
-    <div style="display: flex">
+    <div style="display: flex; align-items: flex-start">
         <BaseTableCard @delete="deleteHandler" />
 
         <BaseInfoCard />
