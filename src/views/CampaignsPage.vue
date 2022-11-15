@@ -11,11 +11,14 @@
 
     <el-pagination background layout="prev, pager, next" :total="1000" />
 
-    <h1>Campaigns</h1>
+    <br />
+
+    <BaseTableCard @delete="deleteHandler" />
 </template>
 
 <script setup lang="ts">
 import BaseToolbar from '@/components/BaseToolbar.vue';
+import BaseTableCard from '@/components/BaseTableCard.vue';
 
 const filterHandler = () => console.log('filter');
 
@@ -24,4 +27,8 @@ const sortHandler = () => console.log('sortHandler');
 const createHandler = () => console.log('createHandler');
 
 const searchHandler = (e: string | number) => console.log('searchHandler', e);
+
+const deleteHandler = () => {
+    console.log('deleteHandler');
+};
 </script>
