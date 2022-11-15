@@ -49,6 +49,53 @@
 
             <hr class="thin-line" />
         </div>
+
+        <br />
+
+        <hr />
+
+        <br />
+
+        <div class="segments">
+            <h2>Сценарий</h2>
+
+            <div>
+                <span>Создать сценарий</span>
+                <OrangePlusIcon />
+            </div>
+        </div>
+
+        <br />
+
+        <br />
+
+        <div>
+            <div class="selected-segments">
+                <p>Новый сценарий</p>
+
+                <div class="icons">
+                    <span>
+                        <EditIcon />
+                    </span>
+
+                    <span>
+                        <DeleteIcon />
+                    </span>
+                </div>
+            </div>
+
+            <hr class="thin-line" />
+        </div>
+
+        <hr />
+
+        <br />
+
+        <div class="btns">
+            <BaseButton text="Сохранить" color="green" />
+
+            <BaseButton text="Отменить" />
+        </div>
     </div>
 </template>
 
@@ -57,6 +104,7 @@ import EditIcon from './icons/EditIcon.vue';
 import CrossIcon from './icons/CrossIcon.vue';
 import OrangePlusIcon from './icons/OrangePlusIcon.vue';
 import DeleteIcon from './icons/DeleteIcon.vue';
+import BaseButton from './ui/BaseButton.vue';
 </script>
 
 <style lang="scss">
@@ -145,6 +193,15 @@ import DeleteIcon from './icons/DeleteIcon.vue';
         height: 1px;
         background: #ebebeb;
         width: 100%;
+    }
+
+    .btns {
+        display: flex;
+        justify-content: center;
+
+        & button {
+            margin: 0 14px;
+        }
     }
 }
 </style>
