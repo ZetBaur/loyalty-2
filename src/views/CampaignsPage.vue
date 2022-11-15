@@ -13,12 +13,17 @@
 
     <br />
 
-    <BaseTableCard @delete="deleteHandler" />
+    <div style="display: flex">
+        <BaseTableCard @delete="deleteHandler" />
+
+        <BaseInfoCard />
+    </div>
 </template>
 
 <script setup lang="ts">
 import BaseToolbar from '@/components/BaseToolbar.vue';
 import BaseTableCard from '@/components/BaseTableCard.vue';
+import BaseInfoCard from '@/components/BaseInfoCard.vue';
 
 const filterHandler = () => console.log('filter');
 

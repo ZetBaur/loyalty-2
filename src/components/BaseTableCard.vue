@@ -75,6 +75,7 @@ const deleteHandler = () => {
     font-size: 14px;
     border: 1px solid #e4e4e4;
     border-radius: 15px;
+    flex: 1;
 }
 
 .column {
