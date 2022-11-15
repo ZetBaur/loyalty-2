@@ -2,10 +2,9 @@
     <BaseToolbar
         @filter-event="filterHandler"
         @sort-event="sortHandler"
-        @search-event="searchHandler"
         @create-event="createHandler"
+        @search-event="searchHandler"
         filter
-        clickSearch
         sort
         create
     />
@@ -20,7 +19,7 @@ const filterHandler = () => console.log('filter');
 
 const sortHandler = () => console.log('sortHandler');
 
-const searchHandler = () => console.log('searchHandler');
-
 const createHandler = () => console.log('createHandler');
+
+const searchHandler = (e: string | number) => console.log('searchHandler', e);
 </script>

@@ -1,39 +1,34 @@
 <template>
     <div class="custom-toolbar">
         <BaseButton
+            v-if="props.filter"
             @action="emit('filterEvent')"
             text="Фильтр"
             :icon="'Filter'"
+            style="margin-right: 39px"
         />
 
         <BaseButton
+            v-if="props.sort"
             @action="emit('sortEvent')"
             text="Сортировка"
             :icon="'Operation'"
+            style="margin-right: 39px"
         />
 
         <el-input
-            v-if="props.clickSearch"
-            v-model="search"
-            placeholder="Please input"
-        >
-            <template #prepend>
-                <el-button @click="searchHadler" :icon="Search" />
-            </template>
-        </el-input>
-
-        <el-input
-            v-if="props.inputSearch"
             v-model="search"
             placeholder="Please input"
             @input="searchHadler"
+            clearable
         >
             <template #prepend>
-                <el-button :icon="Search" />
+                <el-icon size="18"><Search /></el-icon>
             </template>
         </el-input>
 
         <BaseButton
+            v-if="props.create"
             @action="emit('createEvent')"
             text="Создать"
             :icon="'Plus'"
@@ -54,14 +49,13 @@ const props = defineProps<{
     sort?: boolean;
     create?: boolean;
     inputSearch?: boolean;
-    clickSearch?: boolean;
 }>();
 
 const emit = defineEmits<{
     (e: 'filterEvent'): void;
     (e: 'sortEvent'): void;
     (e: 'createEvent'): void;
-    (e: 'searchEvent', value: string): void;
+    (e: 'searchEvent', value: string | number): void;
 }>();
 
 const search = ref('');
@@ -80,14 +74,18 @@ const searchHadler = () => emit('searchEvent', search.value);
 .custom-toolbar {
     display: flex;
 
-    & button {
-        margin-right: 39px;
-    }
-
     & .el-input {
         max-width: 484px;
         margin-left: auto;
         margin-right: 53px;
+    }
+
+    & .el-input-group__prepend {
+        border-radius: 15px 0 0 15px;
+    }
+
+    & .el-input__wrapper {
+        border-radius: 0 15px 15px 0;
     }
 }
 </style>
