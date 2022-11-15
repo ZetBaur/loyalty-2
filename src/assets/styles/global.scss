@@ -2,6 +2,11 @@
 
 $custom-black: #222222;
 
+html,
+body {
+    font-size: 18px;
+}
+
 #app {
     height: 100%;
     font-family: 'Roboto', sans-serif;

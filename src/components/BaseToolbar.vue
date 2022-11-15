@@ -1,20 +1,16 @@
 <template>
     <div class="custom-toolbar">
-        <BaseButton @click-event="click" text="Фильтр" :icon="'Filter'" />
+        <BaseButton
+            @action="emit('filterEvent')"
+            text="Фильтр"
+            :icon="'Filter'"
+        />
 
-        <el-button
-            v-if="props.filter"
-            class="filter-button"
-            @click="emit('filterEvent')"
-            >Фильтр<el-icon class="el-icon--right" size="18"><Filter /></el-icon
-        ></el-button>
-
-        <el-button
-            v-if="props.sort"
-            class="sort-button"
-            @click="emit('sortEvent')"
-            >Сортировка<el-icon class="el-icon--right"><Operation /></el-icon
-        ></el-button>
+        <BaseButton
+            @action="emit('sortEvent')"
+            text="Сортировка"
+            :icon="'Operation'"
+        />
 
         <el-input
             v-if="props.clickSearch"
@@ -37,19 +33,19 @@
             </template>
         </el-input>
 
-        <el-button
-            type="success"
-            v-if="props.create"
-            @click="emit('createEvent')"
-            >Создать<el-icon class="el-icon--right"><Plus /></el-icon
-        ></el-button>
+        <BaseButton
+            @action="emit('createEvent')"
+            text="Создать"
+            :icon="'Plus'"
+            color="green"
+        />
     </div>
 
     <el-divider class="custom-divider" />
 </template>
 
 <script setup lang="ts">
-import { Filter, Operation, Search, Plus } from '@element-plus/icons-vue';
+import { Search } from '@element-plus/icons-vue';
 import { ref } from 'vue';
 import BaseButton from './ui/BaseButton.vue';
 
@@ -68,8 +64,6 @@ const emit = defineEmits<{
     (e: 'searchEvent', value: string): void;
 }>();
 
-const click = (e: Event) => console.log('click', e);
-
 const search = ref('');
 
 const searchHadler = () => emit('searchEvent', search.value);
@@ -86,12 +80,8 @@ const searchHadler = () => emit('searchEvent', search.value);
 .custom-toolbar {
     display: flex;
 
-    & .sort-button {
-        margin-right: 10px;
-    }
-
-    & .filter-button {
-        margin-right: 38px;
+    & button {
+        margin-right: 39px;
     }
 
     & .el-input {

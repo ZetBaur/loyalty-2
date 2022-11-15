@@ -1,10 +1,12 @@
 <template>
-    <button class="base-button" @click="emit('clickEvent', $event)">
+    <button
+        class="base-button"
+        @click="emit('action', $event)"
+        :class="props.color"
+    >
         {{ props.text }}
 
         <component :is="props.icon" lass="icon" v-if="props.icon" />
-
-        <!-- <Filter style="width: 1em; height: 1em; margin-right: 8px" /> -->
     </button>
 </template>
 
@@ -12,10 +14,11 @@
 const props = defineProps<{
     text: string;
     icon?: string;
+    color?: string;
 }>();
 
 const emit = defineEmits<{
-    (e: 'clickEvent', $event: Event): void;
+    (e: 'action', $event: Event): void;
 }>();
 </script>
 
@@ -37,6 +40,15 @@ const emit = defineEmits<{
     & svg {
         margin-left: 18px;
         width: 20px;
+    }
+}
+
+.green {
+    background-color: #00c389;
+    color: #ffffff;
+
+    &:hover {
+        background-color: #1fe1a4;
     }
 }
 </style>
