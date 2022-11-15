@@ -23,7 +23,7 @@
             clearable
         >
             <template #prepend>
-                <el-icon size="18"><Search /></el-icon>
+                <el-icon size="25"><Search /></el-icon>
             </template>
         </el-input>
 

@@ -9,6 +9,8 @@
         create
     />
 
+    <el-pagination background layout="prev, pager, next" :total="1000" />
+
     <h1>Campaigns</h1>
 </template>
 
