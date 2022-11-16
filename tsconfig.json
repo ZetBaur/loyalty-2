@@ -1,12 +1,16 @@
 {
     "extends": "@vue/tsconfig/tsconfig.web.json",
     "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
             "@/*": ["./src/*"]
         },
-        "types": ["element-plus/global"]
+        "types": ["element-plus/global"],
+        "module": "es2022",
+        "moduleResolution": "Node",
+        "allowJs": true
     },
 
     "references": [

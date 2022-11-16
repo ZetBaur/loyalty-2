@@ -1,38 +1,73 @@
 <template>
-    <HeaderView @save="save" />
-
-    <VueFlow v-model="elements" />
+    <VueFlow
+        v-model="elements"
+        class="customnodeflow"
+        :connection-line-style="connectionLineStyle"
+        :default-zoom="1.5"
+        fit-view-on-init
+    >
+        <template #node-custom="{ data }">
+            <BaseNode :data="data" />
+        </template>
+    </VueFlow>
 </template>
 
-<script setup lang="ts">
-import { VueFlow, useVueFlow } from '@vue-flow/core';
-import { ref } from 'vue';
-import HeaderView from './HeaderView.vue';
+<script setup>
+import { Position, VueFlow, useVueFlow } from '@vue-flow/core';
+import { h, onMounted, ref } from 'vue';
+import BaseNode from './BaseNode.vue';
 
-const elements = ref([
-    {
-        id: '1',
-        type: 'input',
-        label: 'Node 1',
-        position: { x: 250, y: 5 },
-        style: { backgroundColor: 'green', width: '200px', height: '100px' }
-    },
+const { findNode } = useVueFlow();
 
-    { id: '2', label: 'Node 2', position: { x: 100, y: 100 } },
-    { id: '3', label: 'Node 3', position: { x: 400, y: 100 } },
+const elements = ref < Node > [];
 
-    { id: '4', type: 'output', label: 'Node 4', position: { x: 400, y: 200 } },
+const connectionLineStyle = { stroke: '#fff' };
 
-    { id: 'e1-3', source: '1', target: '3' },
-
-    { id: 'e1-2', source: '1', target: '2', animated: true }
-]);
-
-const { applyNodeChanges } = useVueFlow({
-    nodes: elements.value
+onMounted(() => {
+    elements.value = [
+        {
+            id: '1',
+            type: 'custom',
+            position: { x: 0, y: 50 }
+        },
+        {
+            id: '2',
+            type: 'output',
+            label: outputNameLabel,
+            position: { x: 350, y: 25 },
+            targetPosition: Position.Left
+        },
+        {
+            id: '3',
+            type: 'output',
+            label: outputColorLabel,
+            position: { x: 350, y: 200 },
+            targetPosition: Position.Left
+        },
+        {
+            id: 'e1a-2',
+            source: '1',
+            sourceHandle: 'a',
+            target: '2',
+            animated: true,
+            style: () => ({
+                stroke: bgColor.value,
+                filter: 'invert(100%)'
+            })
+        },
+        {
+            id: 'e1b-3',
+            source: '1',
+            sourceHandle: 'b',
+            target: '3',
+            animated: true,
+            style: () => ({
+                stroke: bgColor.value,
+                filter: 'invert(100%)'
+            })
+        }
+    ];
 });
-
-const save = () => console.log('save');
 </script>
 
 <style>
