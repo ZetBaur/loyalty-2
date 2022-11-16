@@ -19,9 +19,9 @@ import BaseNode from './BaseNode.vue';
 
 const { findNode } = useVueFlow();
 
-const elements = ref < Node > [];
+const elements = ref([]);
 
-const connectionLineStyle = { stroke: '#fff' };
+const connectionLineStyle = { stroke: '#000' };
 
 onMounted(() => {
     elements.value = [
@@ -33,38 +33,31 @@ onMounted(() => {
         {
             id: '2',
             type: 'output',
-            label: outputNameLabel,
+            label: '1111111111111',
             position: { x: 350, y: 25 },
             targetPosition: Position.Left
         },
         {
             id: '3',
             type: 'output',
-            label: outputColorLabel,
+            label: '222222222222222',
             position: { x: 350, y: 200 },
             targetPosition: Position.Left
         },
+
         {
             id: 'e1a-2',
             source: '1',
             sourceHandle: 'a',
             target: '2',
-            animated: true,
-            style: () => ({
-                stroke: bgColor.value,
-                filter: 'invert(100%)'
-            })
+            animated: true
         },
         {
             id: 'e1b-3',
             source: '1',
             sourceHandle: 'b',
             target: '3',
-            animated: true,
-            style: () => ({
-                stroke: bgColor.value,
-                filter: 'invert(100%)'
-            })
+            animated: true
         }
     ];
 });

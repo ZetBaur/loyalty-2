@@ -1,17 +1,22 @@
 <template>
-    <Handle
-        id="a"
-        type="source"
-        :position="Position.Right"
-        :style="sourceHandleStyleA"
-    />
+    <div
+        class="w-[80px] h-[80px] border border-solid rounded-[10px] border-[#E4E4E4]"
+    >
+        <Handle
+            id="a"
+            type="source"
+            :position="Position.Right"
+            :style="sourceHandleStyleA"
+        />
 
-    <Handle
-        id="b"
-        type="source"
-        :position="Position.Right"
-        :style="sourceHandleStyleB"
-    />
+        <Handle
+            id="b"
+            type="source"
+            :position="Position.Right"
+            :style="sourceHandleStyleB"
+            class="w-[13px] h-[13px]"
+        />
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -28,7 +33,7 @@ const props = defineProps({
 const sourceHandleStyleA = computed(() => ({
     backgroundColor: props.data.color,
     filter: 'invert(100%)',
-    top: '10px'
+    top: '15px'
 }));
 
 const sourceHandleStyleB = computed(() => ({
