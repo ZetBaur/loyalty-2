@@ -15,7 +15,7 @@
 <script setup>
 import { Position, VueFlow, useVueFlow } from '@vue-flow/core';
 import { h, onMounted, ref } from 'vue';
-import BaseNode from './BaseNode.vue';
+import BaseNode from './nodes/ConversionThree.vue';
 
 const { findNode } = useVueFlow();
 

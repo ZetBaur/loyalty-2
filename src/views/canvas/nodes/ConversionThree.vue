@@ -1,7 +1,5 @@
 <template>
-    <div
-        class="w-[80px] h-[80px] border border-solid rounded-[10px] border-[#E4E4E4]"
-    >
+    <div class="base-node">
         <Handle
             id="a"
             type="target"
@@ -22,11 +20,17 @@
             :position="Position.Right"
             class="handle"
         />
+        <span></span>
     </div>
 </template>
 
 <script setup lang="ts">
 import { Handle, Position } from '@vue-flow/core';
+
+const nodeClick = () => {
+    console.log('');
+};
+
 // import { computed } from 'vue';
 
 // const props = defineProps({
@@ -53,6 +57,25 @@ import { Handle, Position } from '@vue-flow/core';
 </script>
 
 <style scoped lang="scss">
+.base-node {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border: 2px solid #e4e4e4;
+    border-radius: 10px;
+
+    & span {
+        position: absolute;
+        width: 86px;
+        height: 86px;
+        left: -5px;
+        top: -5px;
+        border: 3px solid #d4b4f1;
+        border-radius: 13px;
+        z-index: -1;
+    }
+}
+
 .handle-left,
 .handle-upper,
 .handle {
@@ -62,6 +85,7 @@ import { Handle, Position } from '@vue-flow/core';
     border: 2px solid #e68c8c;
     top: auto;
     bottom: 6px;
+    right: -9px;
 
     &:before {
         content: '';
@@ -91,6 +115,7 @@ import { Handle, Position } from '@vue-flow/core';
     top: 50%;
     transform: translateY(-50%);
     bottom: auto;
+    left: -10px;
 }
 
 .handle-upper {
