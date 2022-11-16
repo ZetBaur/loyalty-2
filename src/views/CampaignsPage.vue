@@ -13,10 +13,13 @@
 
     <br />
 
-    <div style="display: flex; align-items: flex-start">
-        <BaseTableCard @delete="deleteHandler" />
+    <div class="flex">
+        <div class="flex-1 mr-[12px]">
+            <BaseTableCard @delete="deleteHandler" />
+            <BaseTableCard @delete="deleteHandler" />
+        </div>
 
-        <BaseInfoCard />
+        <BaseInfoCard class="ml-[14px]" />
     </div>
 </template>
 

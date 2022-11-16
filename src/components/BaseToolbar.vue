@@ -1,5 +1,5 @@
 <template>
-    <div class="custom-toolbar">
+    <div class="flex">
         <BaseButton
             v-if="props.filter"
             @action="emit('filterEvent')"
@@ -21,6 +21,7 @@
             placeholder="Please input"
             @input="searchHadler"
             clearable
+            class="max-w-[484px] ml-auto mr-[53px]"
         >
             <template #prepend>
                 <el-icon size="25"><Search /></el-icon>
@@ -36,7 +37,7 @@
         />
     </div>
 
-    <el-divider class="custom-divider" />
+    <el-divider class="bg-[#f4f4f4] h-[8px] border-0 rounded-[10px]" />
 </template>
 
 <script setup lang="ts">
@@ -64,28 +65,11 @@ const searchHadler = () => emit('searchEvent', search.value);
 </script>
 
 <style lang="scss">
-.custom-divider {
-    background: #f4f4f4;
-    height: 8px !important;
-    border-radius: 10px;
-    border: none;
-}
+// .el-input-group__prepend {
+//     border-radius: 15px 0 0 15px;
+// }
 
-.custom-toolbar {
-    display: flex;
-
-    & .el-input {
-        max-width: 484px;
-        margin-left: auto;
-        margin-right: 53px;
-    }
-
-    & .el-input-group__prepend {
-        border-radius: 15px 0 0 15px;
-    }
-
-    & .el-input__wrapper {
-        border-radius: 0 15px 15px 0;
-    }
-}
+// .el-input__wrapper {
+//     border-radius: 0 15px 15px 0;
+// }
 </style>
