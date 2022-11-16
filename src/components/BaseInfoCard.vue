@@ -24,7 +24,7 @@
                     class="text-[#ff8200] leading-8 border-r border-solid border-r-[#d0d0d0] px-[18px] cursor-pointer"
                     >Настроить группы</span
                 >
-                <OrangePlusIcon class="ml-[18px]" />
+                <OrangePlusIcon class="ml-[18px] cursor-pointer" />
             </div>
         </div>
 
@@ -63,7 +63,10 @@
             <p>Новый сценарий</p>
 
             <div class="flex justify-between items-center">
-                <EditIcon class="cursor-pointer" />
+                <EditIcon
+                    class="cursor-pointer"
+                    @click="emit('createNewScript')"
+                />
 
                 <DeleteIcon class="ml-[35px] cursor-pointer" />
             </div>
@@ -85,4 +88,8 @@ import CrossIcon from './icons/CrossIcon.vue';
 import OrangePlusIcon from './icons/OrangePlusIcon.vue';
 import DeleteIcon from './icons/DeleteIcon.vue';
 import BaseButton from './ui/BaseButton.vue';
+
+const emit = defineEmits<{
+    (e: 'createNewScript'): void;
+}>();
 </script>
