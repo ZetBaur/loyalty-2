@@ -1,7 +1,7 @@
 <template>
     <el-container>
         <div class="canvas-toolbar">
-            <ul>
+            <!-- <ul>
                 <li
                     v-for="n in listNodes"
                     :key="n"
@@ -12,10 +12,13 @@
                 >
                     <BaseButton :text="n.name" />
                 </li>
-            </ul>
+            </ul> -->
 
             <BaseButton text="Экспорт" @action="exportEditor" />
-            <BaseButton text="Добавить элемент" @action="addNewNode" />
+
+            <BaseButton text="Добавить конверсию" @action="addConversionNode" />
+
+            <BaseButton text="Добавить этап" @action="addStageNode" />
         </div>
 
         <el-main class="p-0">
@@ -47,14 +50,14 @@ import ConversionNode from './nodes/ConversionNode.vue';
 
 import BaseButton from '@/components/ui/BaseButton.vue';
 
-const listNodes = readonly([
-    {
-        name: 'StageNode',
-        item: 'StageNode',
-        input: 1,
-        output: 2
-    }
-]);
+// const listNodes = readonly([
+//     {
+//         name: 'StageNode',
+//         item: 'StageNode',
+//         input: 1,
+//         output: 2
+//     }
+// ]);
 
 const editor = shallowRef({});
 const nodesData = ref({});
@@ -67,7 +70,7 @@ function exportEditor() {
     console.log(nodesData.value.drawflow.Home.data);
 }
 
-const addNewNode = () => {
+const addConversionNode = () => {
     editor.value.addNode(
         ConversionNode,
         1,
@@ -77,6 +80,20 @@ const addNewNode = () => {
         'ConversionNode',
         {},
         'ConversionNode',
+        'vue'
+    );
+};
+
+const addStageNode = () => {
+    editor.value.addNode(
+        ConversionNode,
+        1,
+        1,
+        130,
+        30,
+        'StageNode',
+        {},
+        'StageNode',
         'vue'
     );
 };
