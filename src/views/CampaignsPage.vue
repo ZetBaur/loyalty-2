@@ -20,7 +20,7 @@
 
         <BaseInfoCard
             class="ml-[14px]"
-            @create-new-script="router.push('/canvas')"
+            @create-new-script="router.push('/dfpage')"
         />
     </div>
 </template>

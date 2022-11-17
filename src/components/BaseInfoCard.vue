@@ -55,7 +55,10 @@
                     >Создать сценарий</span
                 >
 
-                <OrangePlusIcon class="ml-[18px] cursor-pointer" />
+                <OrangePlusIcon
+                    @click="emit('createNewScript')"
+                    class="ml-[18px] cursor-pointer"
+                />
             </div>
         </div>
 
