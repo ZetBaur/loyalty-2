@@ -1,8 +1,8 @@
 <template>
+    <HeaderView />
     <VueFlow
         v-model="elements"
         class="customnodeflow"
-        :connection-line-style="connectionLineStyle"
         :default-zoom="1.5"
         fit-view-on-init
     >
@@ -16,10 +16,9 @@
 import { VueFlow } from '@vue-flow/core';
 import { onMounted, ref } from 'vue';
 import BaseNode from './nodes/ConversionThree.vue';
+import HeaderView from './HeaderView.vue';
 
 const elements = ref([]);
-
-const connectionLineStyle = { stroke: '#000' };
 
 onMounted(() => {
     elements.value = [
@@ -44,7 +43,7 @@ onMounted(() => {
         {
             id: '4',
             type: 'custom',
-            position: { x: 350, y: 200 }
+            position: { x: 450, y: 200 }
         },
 
         {
@@ -59,6 +58,14 @@ onMounted(() => {
             source: '1',
             sourceHandle: 'b',
             target: '3',
+            animated: true
+        },
+
+        {
+            id: 'e1b-4',
+            source: '3',
+            sourceHandle: 'b',
+            target: '4',
             animated: true
         }
     ];

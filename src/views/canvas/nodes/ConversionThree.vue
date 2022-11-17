@@ -75,6 +75,13 @@ const nodeClick = () => {
         border-radius: 13px;
         z-index: -1;
     }
+
+    // &.selected {
+    //     & span {
+    //         // border: 3px solid red;
+    //         border-color: red;
+    //     }
+    // }
 }
 
 .handle-left,
