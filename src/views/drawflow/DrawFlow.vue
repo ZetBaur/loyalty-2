@@ -15,6 +15,7 @@
             </ul>
 
             <BaseButton text="Экспорт" @action="exportEditor" />
+            <BaseButton text="Добавить элемент" @action="addNewNode" />
         </div>
 
         <el-main class="p-0">
@@ -41,13 +42,13 @@ import {
     ref
 } from 'vue';
 
-import BaseNode from './nodes/BaseNode.vue';
+import StageNode from './nodes/StageNode.vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
 
 const listNodes = readonly([
     {
-        name: 'BaseNode',
-        item: 'BaseNode',
+        name: 'StageNode',
+        item: 'StageNode',
         input: 1,
         output: 2
     }
@@ -64,36 +65,50 @@ function exportEditor() {
     console.log(nodesData.value.drawflow.Home.data);
 }
 
-function addNodeToDrawFlow(name, pos_x, pos_y) {
-    pos_x =
-        pos_x *
-            (editor.value.precanvas.clientWidth /
-                (editor.value.precanvas.clientWidth * editor.value.zoom)) -
-        editor.value.precanvas.getBoundingClientRect().x *
-            (editor.value.precanvas.clientWidth /
-                (editor.value.precanvas.clientWidth * editor.value.zoom));
-    pos_y =
-        pos_y *
-            (editor.value.precanvas.clientHeight /
-                (editor.value.precanvas.clientHeight * editor.value.zoom)) -
-        editor.value.precanvas.getBoundingClientRect().y *
-            (editor.value.precanvas.clientHeight /
-                (editor.value.precanvas.clientHeight * editor.value.zoom));
-
-    const nodeSelected = listNodes.find((el) => el.item == name);
-
+const addNewNode = () => {
     editor.value.addNode(
-        name,
-        nodeSelected.input,
-        nodeSelected.output,
-        pos_x,
-        pos_y,
-        name,
+        StageNode,
+        1,
+        2,
+        30,
+        30,
+        'StageNode',
         {},
-        name,
+        'StageNode',
         'vue'
     );
-}
+};
+
+// function addNodeToDrawFlow(name, pos_x, pos_y) {
+//     pos_x =
+//         pos_x *
+//             (editor.value.precanvas.clientWidth /
+//                 (editor.value.precanvas.clientWidth * editor.value.zoom)) -
+//         editor.value.precanvas.getBoundingClientRect().x *
+//             (editor.value.precanvas.clientWidth /
+//                 (editor.value.precanvas.clientWidth * editor.value.zoom));
+//     pos_y =
+//         pos_y *
+//             (editor.value.precanvas.clientHeight /
+//                 (editor.value.precanvas.clientHeight * editor.value.zoom)) -
+//         editor.value.precanvas.getBoundingClientRect().y *
+//             (editor.value.precanvas.clientHeight /
+//                 (editor.value.precanvas.clientHeight * editor.value.zoom));
+
+//     const nodeSelected = listNodes.find((el) => el.item == name);
+
+//     editor.value.addNode(
+//         name,
+//         nodeSelected.input,
+//         nodeSelected.output,
+//         pos_x,
+//         pos_y,
+//         name,
+//         {},
+//         name,
+//         'vue'
+//     );
+// }
 
 onMounted(() => {
     var elements = document.getElementsByClassName('drag-drawflow');
@@ -114,7 +129,7 @@ onMounted(() => {
 
     editor.value.start();
 
-    editor.value.registerNode('BaseNode', BaseNode, {}, {});
+    editor.value.registerNode('StageNode', StageNode, {}, {});
 
     editor.value.useuuid = true;
 });
