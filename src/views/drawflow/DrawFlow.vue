@@ -1,9 +1,9 @@
 <template>
     <el-container>
         <el-header class="header">
-            <h3>Drawflow Example vue3</h3>
             <el-button type="primary" @click="exportEditor">Export</el-button>
         </el-header>
+
         <el-container class="container">
             <el-aside width="250px" class="column">
                 <ul>
@@ -30,6 +30,7 @@
             </el-main>
         </el-container>
     </el-container>
+
     <el-dialog v-model="dialogVisible" title="Export" width="50%">
         <span>Data:</span>
         <pre><code>{{dialogData}}</code></pre>
@@ -46,7 +47,7 @@
 <script>
 import Drawflow from 'drawflow';
 import styleDrawflow from 'drawflow/dist/drawflow.min.css';
-// import style from '../assets/style.css';
+import style from '@/assets/styles/drawflow.scss';
 import {
     onMounted,
     shallowRef,
@@ -61,6 +62,7 @@ import Node2 from './nodes/node2.vue';
 import Node3 from './nodes/node3.vue';
 
 export default {
+    // eslint-disable-next-line vue/multi-word-component-names
     name: 'drawflow',
     setup() {
         const listNodes = readonly([
