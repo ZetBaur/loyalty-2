@@ -1,6 +1,6 @@
 <template>
     <div ref="el" class="flex justify-center items-center">
-        <img src="@/assets/images/stageicon.svg" />
+        <img src="@/assets/images/conversionicon.svg" />
     </div>
     <span></span>
 </template>

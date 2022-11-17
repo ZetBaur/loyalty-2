@@ -43,6 +43,8 @@ import {
 } from 'vue';
 
 import StageNode from './nodes/StageNode.vue';
+import ConversionNode from './nodes/ConversionNode.vue';
+
 import BaseButton from '@/components/ui/BaseButton.vue';
 
 const listNodes = readonly([
@@ -67,14 +69,14 @@ function exportEditor() {
 
 const addNewNode = () => {
     editor.value.addNode(
-        StageNode,
+        ConversionNode,
         1,
-        2,
+        1,
         30,
         30,
-        'StageNode',
+        'ConversionNode',
         {},
-        'StageNode',
+        'ConversionNode',
         'vue'
     );
 };
@@ -130,6 +132,7 @@ onMounted(() => {
     editor.value.start();
 
     editor.value.registerNode('StageNode', StageNode, {}, {});
+    editor.value.registerNode('ConversionNode', ConversionNode, {}, {});
 
     editor.value.useuuid = true;
 });
