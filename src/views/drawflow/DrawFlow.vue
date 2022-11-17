@@ -10,10 +10,6 @@
                     @dragstart="drag($event)"
                     class="drag-drawflow"
                 >
-                    <!-- <div class="node" :style="`background: ${n.color}`">
-                        {{ n.name }}
-                    </div> -->
-
                     <BaseButton :text="n.name" />
                 </li>
             </ul>
@@ -58,15 +54,14 @@ const listNodes = readonly([
 ]);
 
 const editor = shallowRef({});
-const dialogData = ref({});
+const nodesData = ref({});
 const Vue = { version: 3, h, render };
 const internalInstance = getCurrentInstance();
 internalInstance.appContext.app._context.config.globalProperties.$df = editor;
 
 function exportEditor() {
-    dialogData.value = editor.value.export();
-    console.log(dialogData.value.drawflow.Home.data);
-    // console.log(dialogData.value);
+    nodesData.value = editor.value.export();
+    console.log(nodesData.value.drawflow.Home.data);
 }
 
 function addNodeToDrawFlow(name, pos_x, pos_y) {
@@ -86,8 +81,6 @@ function addNodeToDrawFlow(name, pos_x, pos_y) {
                 (editor.value.precanvas.clientHeight * editor.value.zoom));
 
     const nodeSelected = listNodes.find((el) => el.item == name);
-
-    console.log(nodeSelected);
 
     editor.value.addNode(
         name,
@@ -121,99 +114,13 @@ onMounted(() => {
 
     editor.value.start();
 
-    // editor.value.registerNode('Node1', Node1, {}, {});
-    // editor.value.registerNode('Node2', Node2, {}, {});
-    // editor.value.registerNode('Node3', Node3, {}, {});
     editor.value.registerNode('BaseNode', BaseNode, {}, {});
 
-    // editor.value.import({
-    //     drawflow: {
-    //         Home: {
-    //             data: {
-    //                 5: {
-    //                     id: 5,
-    //                     name: 'BaseNode',
-    //                     data: {
-    //                         script: '(req,res) => {\n console.log(req);\n}'
-    //                     },
-    //                     class: 'BaseNode',
-    //                     html: 'BaseNode',
-    //                     typenode: 'vue',
-    //                     inputs: {
-    //                         input_1: {
-    //                             connections: [{ node: '6', input: 'output_1' }]
-    //                         }
-    //                     },
-    //                     outputs: {
-    //                         output_1: { connections: [] },
-    //                         output_2: { connections: [] }
-    //                     },
-    //                     pos_x: 1000,
-    //                     pos_y: 117
-    //                 },
-    //                 6: {
-    //                     id: 6,
-    //                     name: 'BaseNode',
-    //                     data: { url: 'localhost/add', method: 'post' },
-    //                     class: 'BaseNode',
-    //                     html: 'BaseNode',
-    //                     typenode: 'vue',
-    //                     inputs: {},
-    //                     outputs: {
-    //                         output_1: {
-    //                             connections: [{ node: '5', output: 'input_1' }]
-    //                         }
-    //                     },
-    //                     pos_x: 137,
-    //                     pos_y: 89
-    //                 }
-
-    //                 //====================================
-
-    //                 // 5: {
-    //                 //     id: 5,
-    //                 //     name: 'Node2',
-    //                 //     data: {
-    //                 //         script: '(req,res) => {\n console.log(req);\n}'
-    //                 //     },
-    //                 //     class: 'Node2',
-    //                 //     html: 'Node2',
-    //                 //     typenode: 'vue',
-    //                 //     inputs: {
-    //                 //         input_1: {
-    //                 //             connections: [{ node: '6', input: 'output_1' }]
-    //                 //         }
-    //                 //     },
-    //                 //     outputs: {
-    //                 //         output_1: { connections: [] },
-    //                 //         output_2: { connections: [] }
-    //                 //     },
-    //                 //     pos_x: 1000,
-    //                 //     pos_y: 117
-    //                 // },
-    //                 // 6: {
-    //                 //     id: 6,
-    //                 //     name: 'Node1',
-    //                 //     data: { url: 'localhost/add', method: 'post' },
-    //                 //     class: 'Node1',
-    //                 //     html: 'Node1',
-    //                 //     typenode: 'vue',
-    //                 //     inputs: {},
-    //                 //     outputs: {
-    //                 //         output_1: {
-    //                 //             connections: [{ node: '5', output: 'input_1' }]
-    //                 //         }
-    //                 //     },
-    //                 //     pos_x: 137,
-    //                 //     pos_y: 89
-    //                 // }
-    //             }
-    //         }
-    //     }
-    // });
+    editor.value.useuuid = true;
 });
 
 //=====================================================================================
+
 let mobile_item_selec = '';
 let mobile_last_move = null;
 function positionMobile(ev) {
