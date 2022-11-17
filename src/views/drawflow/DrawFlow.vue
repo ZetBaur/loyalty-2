@@ -1,54 +1,40 @@
 <template>
     <el-container>
-        <el-header class="header">
-            <el-button type="primary" @click="exportEditor">Export</el-button>
-        </el-header>
-
-        <el-container class="container">
-            <el-aside width="250px" class="column">
-                <ul>
-                    <li
-                        v-for="n in listNodes"
-                        :key="n"
-                        draggable="true"
-                        :data-node="n.item"
-                        @dragstart="drag($event)"
-                        class="drag-drawflow"
-                    >
-                        <div class="node" :style="`background: ${n.color}`">
-                            {{ n.name }}
-                        </div>
-                    </li>
-                </ul>
-            </el-aside>
-            <el-main>
-                <div
-                    id="drawflow"
-                    @drop="drop($event)"
-                    @dragover="allowDrop($event)"
-                ></div>
-            </el-main>
-        </el-container>
-    </el-container>
-
-    <el-dialog v-model="dialogVisible" title="Export" width="50%">
-        <span>Data:</span>
-        <pre><code>{{dialogData}}</code></pre>
-        <template #footer>
-            <span class="dialog-footer">
-                <el-button @click="dialogVisible = false">Cancel</el-button>
-                <el-button type="primary" @click="dialogVisible = false"
-                    >Confirm</el-button
+        <div class="canvas-toolbar">
+            <ul>
+                <li
+                    v-for="n in listNodes"
+                    :key="n"
+                    draggable="true"
+                    :data-node="n.item"
+                    @dragstart="drag($event)"
+                    class="drag-drawflow"
                 >
-            </span>
-        </template>
-    </el-dialog>
+                    <!-- <div class="node" :style="`background: ${n.color}`">
+                        {{ n.name }}
+                    </div> -->
+
+                    <BaseButton :text="n.name" />
+                </li>
+            </ul>
+
+            <BaseButton text="Экспорт" @action="exportEditor" />
+        </div>
+
+        <el-main class="p-0">
+            <div
+                id="drawflow"
+                @drop="drop($event)"
+                @dragover="allowDrop($event)"
+            ></div>
+        </el-main>
+    </el-container>
 </template>
+
 <script setup>
 import Drawflow from 'drawflow';
 import styleDrawflow from 'drawflow/dist/drawflow.min.css';
 import style from '@/assets/styles/drawflow.scss';
-
 import {
     onMounted,
     shallowRef,
@@ -61,15 +47,16 @@ import {
 import Node1 from './nodes/node1.vue';
 import Node2 from './nodes/node2.vue';
 import Node3 from './nodes/node3.vue';
+import BaseButton from '@/components/ui/BaseButton.vue';
+import BaseNode from './nodes/BaseNode.vue';
 
-// eslint-disable-next-line vue/multi-word-component-names
 const listNodes = readonly([
     {
-        name: 'Get/Post',
+        name: 'BaseNode',
         color: '#49494970',
-        item: 'Node1',
-        input: 0,
-        output: 1
+        item: 'BaseNode',
+        input: 2,
+        output: 2
     },
     {
         name: 'Script',
@@ -88,7 +75,6 @@ const listNodes = readonly([
 ]);
 
 const editor = shallowRef({});
-const dialogVisible = ref(false);
 const dialogData = ref({});
 const Vue = { version: 3, h, render };
 const internalInstance = getCurrentInstance();
@@ -96,51 +82,12 @@ internalInstance.appContext.app._context.config.globalProperties.$df = editor;
 
 function exportEditor() {
     dialogData.value = editor.value.export();
-    dialogVisible.value = true;
-}
-
-const drag = (ev) => {
-    if (ev.type === 'touchstart') {
-        mobile_item_selec = ev.target
-            .closest('.drag-drawflow')
-            .getAttribute('data-node');
-    } else {
-        ev.dataTransfer.setData('node', ev.target.getAttribute('data-node'));
-    }
-};
-const drop = (ev) => {
-    if (ev.type === 'touchend') {
-        var parentdrawflow = document
-            .elementFromPoint(
-                mobile_last_move.touches[0].clientX,
-                mobile_last_move.touches[0].clientY
-            )
-            .closest('#drawflow');
-        if (parentdrawflow != null) {
-            addNodeToDrawFlow(
-                mobile_item_selec,
-                mobile_last_move.touches[0].clientX,
-                mobile_last_move.touches[0].clientY
-            );
-        }
-        mobile_item_selec = '';
-    } else {
-        ev.preventDefault();
-        var data = ev.dataTransfer.getData('node');
-        addNodeToDrawFlow(data, ev.clientX, ev.clientY);
-    }
-};
-const allowDrop = (ev) => {
-    ev.preventDefault();
-};
-
-let mobile_item_selec = '';
-let mobile_last_move = null;
-function positionMobile(ev) {
-    mobile_last_move = ev;
+    console.log(dialogData.value.drawflow.Home.data);
 }
 
 function addNodeToDrawFlow(name, pos_x, pos_y) {
+    console.log(name);
+
     pos_x =
         pos_x *
             (editor.value.precanvas.clientWidth /
@@ -156,7 +103,10 @@ function addNodeToDrawFlow(name, pos_x, pos_y) {
             (editor.value.precanvas.clientHeight /
                 (editor.value.precanvas.clientHeight * editor.value.zoom));
 
-    const nodeSelected = listNodes.find((ele) => ele.item == name);
+    const nodeSelected = listNodes.find((el) => el.item == name);
+
+    console.log(nodeSelected);
+
     editor.value.addNode(
         name,
         nodeSelected.input,
@@ -172,6 +122,7 @@ function addNodeToDrawFlow(name, pos_x, pos_y) {
 
 onMounted(() => {
     var elements = document.getElementsByClassName('drag-drawflow');
+
     for (var i = 0; i < elements.length; i++) {
         elements[i].addEventListener('touchend', drop, false);
         elements[i].addEventListener('touchmove', positionMobile, false);
@@ -179,16 +130,19 @@ onMounted(() => {
     }
 
     const id = document.getElementById('drawflow');
+
     editor.value = new Drawflow(
         id,
         Vue,
         internalInstance.appContext.app._context
     );
+
     editor.value.start();
 
     editor.value.registerNode('Node1', Node1, {}, {});
     editor.value.registerNode('Node2', Node2, {}, {});
     editor.value.registerNode('Node3', Node3, {}, {});
+    editor.value.registerNode('BaseNode', BaseNode, {}, {});
 
     editor.value.import({
         drawflow: {
@@ -236,8 +190,57 @@ onMounted(() => {
         }
     });
 });
+
+//=====================================================================================
+let mobile_item_selec = '';
+let mobile_last_move = null;
+function positionMobile(ev) {
+    mobile_last_move = ev;
+}
+
+const allowDrop = (ev) => {
+    ev.preventDefault();
+};
+
+const drag = (ev) => {
+    if (ev.type === 'touchstart') {
+        mobile_item_selec = ev.target
+            .closest('.drag-drawflow')
+            .getAttribute('data-node');
+    } else {
+        ev.dataTransfer.setData('node', ev.target.getAttribute('data-node'));
+    }
+};
+const drop = (ev) => {
+    if (ev.type === 'touchend') {
+        var parentdrawflow = document
+            .elementFromPoint(
+                mobile_last_move.touches[0].clientX,
+                mobile_last_move.touches[0].clientY
+            )
+            .closest('#drawflow');
+        if (parentdrawflow != null) {
+            addNodeToDrawFlow(
+                mobile_item_selec,
+                mobile_last_move.touches[0].clientX,
+                mobile_last_move.touches[0].clientY
+            );
+        }
+        mobile_item_selec = '';
+    } else {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData('node');
+        addNodeToDrawFlow(data, ev.clientX, ev.clientY);
+    }
+};
 </script>
-<style scoped>
+
+<style lang="scss" scoped>
+.el-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
 .header {
     display: flex;
     justify-content: space-between;
@@ -247,16 +250,25 @@ onMounted(() => {
 .container {
     min-height: calc(100vh - 100px);
 }
-.column {
-    border-right: 1px solid #494949;
+.canvas-toolbar {
+    // border-right: 1px solid #494949;
+
+    display: flex;
+    align-items: center;
+
+    & ul {
+        display: flex;
+        font-display: row;
+    }
 }
-.column ul {
-    padding-inline-start: 0px;
-    padding: 10px 10px;
-}
-.column li {
-    background: transparent;
-}
+
+// .canvas-toolbar ul {
+//     padding-inline-start: 0px;
+//     padding: 10px 10px;
+// }
+// .canvas-toolbar li {
+//     background: transparent;
+// }
 
 .node {
     border-radius: 8px;
