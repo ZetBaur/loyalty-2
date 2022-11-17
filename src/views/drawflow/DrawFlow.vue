@@ -44,33 +44,16 @@ import {
     readonly,
     ref
 } from 'vue';
-import Node1 from './nodes/node1.vue';
-import Node2 from './nodes/node2.vue';
-import Node3 from './nodes/node3.vue';
-import BaseButton from '@/components/ui/BaseButton.vue';
+
 import BaseNode from './nodes/BaseNode.vue';
+import BaseButton from '@/components/ui/BaseButton.vue';
 
 const listNodes = readonly([
     {
         name: 'BaseNode',
-        color: '#49494970',
         item: 'BaseNode',
-        input: 2,
-        output: 2
-    },
-    {
-        name: 'Script',
-        color: 'blue',
-        item: 'Node2',
         input: 1,
         output: 2
-    },
-    {
-        name: 'console.log',
-        color: '#ff9900',
-        item: 'Node3',
-        input: 1,
-        output: 0
     }
 ]);
 
@@ -83,11 +66,10 @@ internalInstance.appContext.app._context.config.globalProperties.$df = editor;
 function exportEditor() {
     dialogData.value = editor.value.export();
     console.log(dialogData.value.drawflow.Home.data);
+    // console.log(dialogData.value);
 }
 
 function addNodeToDrawFlow(name, pos_x, pos_y) {
-    console.log(name);
-
     pos_x =
         pos_x *
             (editor.value.precanvas.clientWidth /
@@ -139,56 +121,96 @@ onMounted(() => {
 
     editor.value.start();
 
-    editor.value.registerNode('Node1', Node1, {}, {});
-    editor.value.registerNode('Node2', Node2, {}, {});
-    editor.value.registerNode('Node3', Node3, {}, {});
+    // editor.value.registerNode('Node1', Node1, {}, {});
+    // editor.value.registerNode('Node2', Node2, {}, {});
+    // editor.value.registerNode('Node3', Node3, {}, {});
     editor.value.registerNode('BaseNode', BaseNode, {}, {});
 
-    editor.value.import({
-        drawflow: {
-            Home: {
-                data: {
-                    5: {
-                        id: 5,
-                        name: 'Node2',
-                        data: {
-                            script: '(req,res) => {\n console.log(req);\n}'
-                        },
-                        class: 'Node2',
-                        html: 'Node2',
-                        typenode: 'vue',
-                        inputs: {
-                            input_1: {
-                                connections: [{ node: '6', input: 'output_1' }]
-                            }
-                        },
-                        outputs: {
-                            output_1: { connections: [] },
-                            output_2: { connections: [] }
-                        },
-                        pos_x: 1000,
-                        pos_y: 117
-                    },
-                    6: {
-                        id: 6,
-                        name: 'Node1',
-                        data: { url: 'localhost/add', method: 'post' },
-                        class: 'Node1',
-                        html: 'Node1',
-                        typenode: 'vue',
-                        inputs: {},
-                        outputs: {
-                            output_1: {
-                                connections: [{ node: '5', output: 'input_1' }]
-                            }
-                        },
-                        pos_x: 137,
-                        pos_y: 89
-                    }
-                }
-            }
-        }
-    });
+    // editor.value.import({
+    //     drawflow: {
+    //         Home: {
+    //             data: {
+    //                 5: {
+    //                     id: 5,
+    //                     name: 'BaseNode',
+    //                     data: {
+    //                         script: '(req,res) => {\n console.log(req);\n}'
+    //                     },
+    //                     class: 'BaseNode',
+    //                     html: 'BaseNode',
+    //                     typenode: 'vue',
+    //                     inputs: {
+    //                         input_1: {
+    //                             connections: [{ node: '6', input: 'output_1' }]
+    //                         }
+    //                     },
+    //                     outputs: {
+    //                         output_1: { connections: [] },
+    //                         output_2: { connections: [] }
+    //                     },
+    //                     pos_x: 1000,
+    //                     pos_y: 117
+    //                 },
+    //                 6: {
+    //                     id: 6,
+    //                     name: 'BaseNode',
+    //                     data: { url: 'localhost/add', method: 'post' },
+    //                     class: 'BaseNode',
+    //                     html: 'BaseNode',
+    //                     typenode: 'vue',
+    //                     inputs: {},
+    //                     outputs: {
+    //                         output_1: {
+    //                             connections: [{ node: '5', output: 'input_1' }]
+    //                         }
+    //                     },
+    //                     pos_x: 137,
+    //                     pos_y: 89
+    //                 }
+
+    //                 //====================================
+
+    //                 // 5: {
+    //                 //     id: 5,
+    //                 //     name: 'Node2',
+    //                 //     data: {
+    //                 //         script: '(req,res) => {\n console.log(req);\n}'
+    //                 //     },
+    //                 //     class: 'Node2',
+    //                 //     html: 'Node2',
+    //                 //     typenode: 'vue',
+    //                 //     inputs: {
+    //                 //         input_1: {
+    //                 //             connections: [{ node: '6', input: 'output_1' }]
+    //                 //         }
+    //                 //     },
+    //                 //     outputs: {
+    //                 //         output_1: { connections: [] },
+    //                 //         output_2: { connections: [] }
+    //                 //     },
+    //                 //     pos_x: 1000,
+    //                 //     pos_y: 117
+    //                 // },
+    //                 // 6: {
+    //                 //     id: 6,
+    //                 //     name: 'Node1',
+    //                 //     data: { url: 'localhost/add', method: 'post' },
+    //                 //     class: 'Node1',
+    //                 //     html: 'Node1',
+    //                 //     typenode: 'vue',
+    //                 //     inputs: {},
+    //                 //     outputs: {
+    //                 //         output_1: {
+    //                 //             connections: [{ node: '5', output: 'input_1' }]
+    //                 //         }
+    //                 //     },
+    //                 //     pos_x: 137,
+    //                 //     pos_y: 89
+    //                 // }
+    //             }
+    //         }
+    //     }
+    // });
 });
 
 //=====================================================================================
