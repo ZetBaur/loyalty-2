@@ -2,7 +2,7 @@
     <div ref="el" class="flex justify-center items-center">
         <img src="@/assets/images/conversionicon.svg" />
     </div>
-    <span></span>
+    <span class="conversion-border"></span>
 </template>
 
 <script setup>
@@ -69,20 +69,6 @@ onMounted(async () => {
     }
 }
 
-// .drawflow .drawflow-node {
-//     .output_1 {
-//         &::after {
-//             border-color: #8ce4ca;
-//         }
-//     }
-
-//     .output_2 {
-//         &::after {
-//             border-color: #e68c8c;
-//         }
-//     }
-// }
-
 .drawflow .drawflow-node .input {
     left: -26px;
 }
@@ -95,10 +81,10 @@ onMounted(async () => {
 
 .drawflow .drawflow-node.selected {
     background: transparent;
-    border-color: #3a9023;
+    // border-color: #3a9023;
 
-    & span {
-        border-color: #c0dbb8;
+    & .conversion-border {
+        border-color: #d4b4f1;
     }
 }
 
