@@ -1,5 +1,5 @@
 <template>
-    <div class="base-node">
+    <div class="node" @click="nodeClick">
         <Handle
             id="a"
             type="target"
@@ -20,6 +20,7 @@
             :position="Position.Right"
             class="handle"
         />
+
         <span></span>
     </div>
 </template>
@@ -28,7 +29,7 @@
 import { Handle, Position } from '@vue-flow/core';
 
 const nodeClick = () => {
-    console.log('');
+    console.log('ffffffffff');
 };
 
 // import { computed } from 'vue';
@@ -57,7 +58,7 @@ const nodeClick = () => {
 </script>
 
 <style scoped lang="scss">
-.base-node {
+.node {
     position: relative;
     width: 80px;
     height: 80px;

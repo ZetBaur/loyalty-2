@@ -13,11 +13,9 @@
 </template>
 
 <script setup>
-import { Position, VueFlow, useVueFlow } from '@vue-flow/core';
-import { h, onMounted, ref } from 'vue';
+import { VueFlow } from '@vue-flow/core';
+import { onMounted, ref } from 'vue';
 import BaseNode from './nodes/ConversionThree.vue';
-
-const { findNode } = useVueFlow();
 
 const elements = ref([]);
 
@@ -30,28 +28,32 @@ onMounted(() => {
             type: 'custom',
             position: { x: 0, y: 50 }
         },
+
         {
             id: '2',
-            type: 'output',
-            label: '1111111111111',
-            position: { x: 350, y: 25 },
-            targetPosition: Position.Left
+            type: 'custom',
+            position: { x: 350, y: 25 }
         },
+
         {
             id: '3',
-            type: 'output',
-            label: '222222222222222',
-            position: { x: 350, y: 200 },
-            targetPosition: Position.Left
+            type: 'custom',
+            position: { x: 350, y: 200 }
+        },
+
+        {
+            id: '4',
+            type: 'custom',
+            position: { x: 350, y: 200 }
         },
 
         {
             id: 'e1a-2',
             source: '1',
-            sourceHandle: 'a',
             target: '2',
             animated: true
         },
+
         {
             id: 'e1b-3',
             source: '1',
