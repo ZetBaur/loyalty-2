@@ -87,8 +87,8 @@ const addConversionNode = () => {
         'ConversionNode',
         1,
         1,
-        30,
-        30,
+        70,
+        70,
         'ConversionNode',
         {},
         'ConversionNode',
@@ -101,13 +101,19 @@ const addStageNode = () => {
         'StageNode',
         1,
         1,
-        130,
-        30,
+        200,
+        70,
         'StageNode',
         {},
         'StageNode',
         'vue'
     );
+};
+
+const handleNodeEvents = (event) => {
+    if (event.target.attributes.id) {
+        console.log('fffff', event.target.attributes.id.value);
+    }
 };
 
 // function addNodeToDrawFlow(name, pos_x, pos_y) {
@@ -163,7 +169,13 @@ onMounted(() => {
     editor.value.registerNode('StageNode', StageNode, {}, {});
     editor.value.registerNode('ConversionNode', ConversionNode, {}, {});
 
-    editor.value.useuuid = true;
+    editor.value.on('nodeSelected', function (id) {
+        console.log('nodeSelected ' + id);
+    });
+
+    editor.value.on('click', (event) => handleNodeEvents(event));
+
+    // editor.value.useuuid = true;
 });
 
 //=====================================================================================
