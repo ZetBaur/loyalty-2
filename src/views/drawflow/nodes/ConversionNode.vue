@@ -5,21 +5,18 @@
 
     <span class="conversion-border"></span>
 
-    <div class="flex absolute top-[-50px] left-[-17px]">
+    <div class="node-icons hidden absolute top-[-50px] left-[-17px]">
         <div
-            @click="emit('delete')"
             id="delete-button"
             class="delete-button w-[34px] h-[34px] rounded-[5px] bg-[#69696B] flex justify-center items-center cursor-pointer"
         ></div>
 
         <div
-            @click="emit('edit')"
             id="edit-button"
             class="edit-button w-[34px] h-[34px] rounded-[5px] bg-[#69696B] flex justify-center items-center mx-1 cursor-pointer"
         ></div>
 
         <div
-            @click="emit('add')"
             id="add-button"
             class="add-button w-[34px] h-[34px] rounded-[5px] bg-[#69696B] flex justify-center items-center cursor-pointer"
         ></div>

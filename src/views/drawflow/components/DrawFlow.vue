@@ -46,7 +46,6 @@ import style from '@/assets/styles/drawflow.scss';
 import ConversionIcon from '@/components/icons/ConversionIcon.vue';
 import StageIcon from '@/components/icons/StageIcon.vue';
 import HeaderView from './HeaderView.vue';
-
 import {
     onMounted,
     shallowRef,
@@ -56,11 +55,12 @@ import {
     // readonly,
     ref
 } from 'vue';
-
 import StageNode from '../nodes/StageNode.vue';
 import ConversionNode from '../nodes/ConversionNode.vue';
-
 import BaseButton from '@/components/ui/BaseButton.vue';
+import { useDrawflowStore } from '@/stores/drawflowStore';
+
+const drawflowStore = useDrawflowStore();
 
 // const listNodes = readonly([
 //     {
@@ -113,6 +113,12 @@ const addStageNode = () => {
 const handleNodeEvents = (event) => {
     if (event.target.attributes.id) {
         console.log('fffff', event.target.attributes.id.value);
+
+        if (event.target.attributes.id.value === 'delete-button') {
+            console.log(drawflowStore.nodeSelected);
+
+            editor.value.removeNodeId('node-' + drawflowStore.nodeSelected);
+        }
     }
 };
 
@@ -169,9 +175,7 @@ onMounted(() => {
     editor.value.registerNode('StageNode', StageNode, {}, {});
     editor.value.registerNode('ConversionNode', ConversionNode, {}, {});
 
-    editor.value.on('nodeSelected', function (id) {
-        console.log('nodeSelected ' + id);
-    });
+    editor.value.on('nodeSelected', (id) => (drawflowStore.nodeSelected = id));
 
     editor.value.on('click', (event) => handleNodeEvents(event));
 
