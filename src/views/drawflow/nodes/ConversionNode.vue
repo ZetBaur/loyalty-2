@@ -10,7 +10,6 @@ import { ref, getCurrentInstance, nextTick, onMounted } from 'vue';
 import StageIcon from '@/components/icons/StageIcon.vue';
 
 const el = ref(null);
-const textarea = ref('');
 let df = null;
 const nodeId = ref(0);
 const dataNode = ref({});
@@ -21,6 +20,5 @@ onMounted(async () => {
     await nextTick();
     nodeId.value = el.value.parentElement.parentElement.id.slice(5);
     dataNode.value = df.getNodeFromId(nodeId.value);
-    textarea.value = dataNode.value.data.script;
 });
 </script>

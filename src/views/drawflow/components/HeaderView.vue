@@ -3,12 +3,12 @@
         <div class="flex items-center">
             <el-icon
                 @click="router.go(-1)"
-                class="mr-[38px] cursor-pointer"
+                class="mr-7 cursor-pointer"
                 :size="25"
                 ><ArrowLeft
             /></el-icon>
 
-            <h1 class="text-[30px] font-bold mr-[38px]">Новый сценарий</h1>
+            <h1 class="text-[30px] font-bold mr-10">Новый сценарий</h1>
 
             <EditIcon class="cursor-pointer" />
         </div>

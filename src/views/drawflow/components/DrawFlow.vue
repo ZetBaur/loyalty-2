@@ -16,11 +16,15 @@
                 </li>
             </ul> -->
 
-            <BaseButton text="Конверсия" @action="addConversionNode">
+            <BaseButton
+                @action="addConversionNode"
+                text="Конверсия"
+                class="mr-4"
+            >
                 <ConversionIcon />
             </BaseButton>
 
-            <BaseButton text="Этапы" @action="addStageNode">
+            <BaseButton @action="addStageNode" text="Этапы">
                 <StageIcon />
             </BaseButton>
         </div>
