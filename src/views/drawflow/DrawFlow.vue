@@ -1,8 +1,8 @@
 <template>
-    <el-container>
+    <el-container class="h-full flex flex-col">
         <HeaderView @save="exportEditor" />
 
-        <div class="canvas-toolbar mt-4">
+        <div class="flex it mt-4">
             <!-- <ul>
                 <li
                     v-for="n in listNodes"
@@ -206,34 +206,3 @@ const drop = (ev) => {
     }
 };
 </script>
-
-<style lang="scss" scoped>
-.el-container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.canvas-toolbar {
-    // border-right: 1px solid #494949;
-
-    display: flex;
-    align-items: center;
-
-    & ul {
-        display: flex;
-        font-display: row;
-    }
-}
-
-// .node {
-//     border-radius: 8px;
-//     border: 2px solid #494949;
-//     display: block;
-//     height: 60px;
-//     line-height: 40px;
-//     padding: 10px;
-//     margin: 10px 0px;
-//     cursor: move;
-// }
-</style>
