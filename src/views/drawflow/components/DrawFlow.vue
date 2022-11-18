@@ -120,9 +120,11 @@ const handleNodeEvents = (event) => {
         console.log('fffff', event.target.attributes.id.value);
 
         if (event.target.attributes.id.value === 'delete-button') {
-            console.log(drawflowStore.nodeSelected);
-
             editor.value.removeNodeId('node-' + drawflowStore.nodeSelected);
+        }
+
+        if (event.target.attributes.id.value === 'add-button') {
+            drawflowStore.showOptions = true;
         }
     }
 };

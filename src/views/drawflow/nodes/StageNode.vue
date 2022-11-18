@@ -22,7 +22,7 @@
         ></div>
     </div>
 
-    <div class="node-adds">
+    <div class="node-options">
         <div>Этап</div>
         <div>Конверсия</div>
     </div>
@@ -38,6 +38,9 @@
 
 <script setup>
 import { ref, getCurrentInstance, nextTick, onMounted } from 'vue';
+// import { useDrawflowStore } from '@/stores/drawflowStore';
+
+// const drawflowStore = useDrawflowStore();
 
 const el = ref(null);
 let df = null;

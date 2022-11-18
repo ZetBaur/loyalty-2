@@ -26,7 +26,7 @@
         ></div>
     </div>
 
-    <div class="node-adds">
+    <div class="node-options">
         <div>Этап</div>
         <div>Конверсия</div>
     </div>
