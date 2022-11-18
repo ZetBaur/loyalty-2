@@ -25,7 +25,7 @@ onMounted(async () => {
 });
 </script>
 
-<style lang="scss">
+<!-- <style lang="scss">
 .drawflow .drawflow-node {
     width: 80px;
     height: 80px;
@@ -103,4 +103,4 @@ onMounted(async () => {
 #drawflow {
     background: #ffffff !important;
 }
-</style>
+</style> -->

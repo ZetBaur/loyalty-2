@@ -6,7 +6,9 @@
     >
         {{ props.text }}
 
-        <component :is="props.icon" lass="icon" v-if="props.icon" />
+        <component :is="props.icon" v-if="props.icon" />
+
+        <slot />
     </button>
 </template>
 

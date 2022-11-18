@@ -14,11 +14,15 @@
                 </li>
             </ul> -->
 
+            <BaseButton text="Конверсия" @action="addConversionNode">
+                <ConversionIcon />
+            </BaseButton>
+
+            <BaseButton text="Этапы" @action="addStageNode">
+                <StageIcon />
+            </BaseButton>
+
             <BaseButton text="Экспорт" @action="exportEditor" />
-
-            <BaseButton text="Добавить конверсию" @action="addConversionNode" />
-
-            <BaseButton text="Добавить этап" @action="addStageNode" />
         </div>
 
         <el-main class="p-0">
@@ -35,13 +39,16 @@
 import Drawflow from 'drawflow';
 import styleDrawflow from 'drawflow/dist/drawflow.min.css';
 import style from '@/assets/styles/drawflow.scss';
+import ConversionIcon from '@/components/icons/ConversionIcon.vue';
+import StageIcon from '@/components/icons/StageIcon.vue';
+
 import {
     onMounted,
     shallowRef,
     h,
     getCurrentInstance,
     render,
-    readonly,
+    // readonly,
     ref
 } from 'vue';
 
@@ -72,7 +79,7 @@ function exportEditor() {
 
 const addConversionNode = () => {
     editor.value.addNode(
-        ConversionNode,
+        'ConversionNode',
         1,
         1,
         30,
@@ -86,7 +93,7 @@ const addConversionNode = () => {
 
 const addStageNode = () => {
     editor.value.addNode(
-        ConversionNode,
+        'StageNode',
         1,
         1,
         130,
@@ -205,15 +212,7 @@ const drop = (ev) => {
     display: flex;
     flex-direction: column;
 }
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #494949;
-}
-.container {
-    min-height: calc(100vh - 100px);
-}
+
 .canvas-toolbar {
     // border-right: 1px solid #494949;
 
@@ -226,30 +225,14 @@ const drop = (ev) => {
     }
 }
 
-// .canvas-toolbar ul {
-//     padding-inline-start: 0px;
-//     padding: 10px 10px;
+// .node {
+//     border-radius: 8px;
+//     border: 2px solid #494949;
+//     display: block;
+//     height: 60px;
+//     line-height: 40px;
+//     padding: 10px;
+//     margin: 10px 0px;
+//     cursor: move;
 // }
-// .canvas-toolbar li {
-//     background: transparent;
-// }
-
-.node {
-    border-radius: 8px;
-    border: 2px solid #494949;
-    display: block;
-    height: 60px;
-    line-height: 40px;
-    padding: 10px;
-    margin: 10px 0px;
-    cursor: move;
-}
-#drawflow {
-    width: 100%;
-    height: 100%;
-    text-align: initial;
-    background: #2b2c30;
-    background-size: 20px 20px;
-    background-image: radial-gradient(#494949 1px, transparent 1px);
-}
 </style>
