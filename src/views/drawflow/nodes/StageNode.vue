@@ -1,5 +1,5 @@
 <template>
-    <div ref="el" class="flex justify-center items-center" @click="onClick">
+    <div ref="el" class="flex justify-center items-center">
         <img src="@/assets/images/stageicon.svg" />
     </div>
 
@@ -21,13 +21,23 @@
             class="add-button w-[34px] h-[34px] rounded-[5px] bg-[#69696B] flex justify-center items-center cursor-pointer"
         ></div>
     </div>
+
+    <div class="node-adds">
+        <div>Этап</div>
+        <div>Конверсия</div>
+    </div>
+
+    <div class="node-description">
+        <div>Второй этап - {{ dataNode.data && stage }}</div>
+        <div>
+            Размер сегмента -
+            {{ dataNode.data && dataNode.data.segment_size }}
+        </div>
+    </div>
 </template>
 
 <script setup>
 import { ref, getCurrentInstance, nextTick, onMounted } from 'vue';
-import { useDrawflowStore } from '@/stores/drawflowStore';
-
-const drawflowStore = useDrawflowStore();
 
 const el = ref(null);
 let df = null;
@@ -40,10 +50,6 @@ onMounted(async () => {
     nodeId.value = el.value.parentElement.parentElement.id.slice(5);
     dataNode.value = df.getNodeFromId(nodeId.value);
 });
-
-const onClick = () => {
-    console.log('onClick');
-};
 </script>
 
 <style lang="scss">

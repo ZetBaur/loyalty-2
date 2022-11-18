@@ -11,21 +11,31 @@
             class="delete-button w-[34px] h-[34px] rounded-[5px] bg-[#69696B] flex justify-center items-center cursor-pointer"
         ></div>
 
+        <!--  -->
+
         <div
             id="edit-button"
             class="edit-button w-[34px] h-[34px] rounded-[5px] bg-[#69696B] flex justify-center items-center mx-1 cursor-pointer"
         ></div>
+
+        <!--  -->
 
         <div
             id="add-button"
             class="add-button w-[34px] h-[34px] rounded-[5px] bg-[#69696B] flex justify-center items-center cursor-pointer"
         ></div>
     </div>
+
+    <div class="node-adds">
+        <div>Этап</div>
+        <div>Конверсия</div>
+    </div>
+
+    <div class="node-description conversion-node-description">Конверсия</div>
 </template>
 
 <script setup>
 import { ref, getCurrentInstance, nextTick, onMounted } from 'vue';
-const emit = defineEmits(['delete', 'edit', 'add']);
 
 const el = ref(null);
 let df = null;

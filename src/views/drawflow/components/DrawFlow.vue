@@ -53,7 +53,8 @@ import {
     getCurrentInstance,
     render,
     // readonly,
-    ref
+    ref,
+    computed
 } from 'vue';
 import StageNode from '../nodes/StageNode.vue';
 import ConversionNode from '../nodes/ConversionNode.vue';
@@ -77,9 +78,13 @@ const Vue = { version: 3, h, render };
 const internalInstance = getCurrentInstance();
 internalInstance.appContext.app._context.config.globalProperties.$df = editor;
 
+const currentData = computed(() => nodesData.value.drawflow.Home.data);
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 function exportEditor() {
     nodesData.value = editor.value.export();
-    console.log(nodesData.value.drawflow.Home.data);
+    console.log(currentData.value);
 }
 
 const addConversionNode = () => {
@@ -121,6 +126,8 @@ const handleNodeEvents = (event) => {
         }
     }
 };
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // function addNodeToDrawFlow(name, pos_x, pos_y) {
 //     pos_x =
