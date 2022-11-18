@@ -53,8 +53,8 @@ import {
     ref
 } from 'vue';
 
-import StageNode from './nodes/StageNode.vue';
-import ConversionNode from './nodes/ConversionNode.vue';
+import StageNode from '../nodes/StageNode.vue';
+import ConversionNode from '../nodes/ConversionNode.vue';
 
 import BaseButton from '@/components/ui/BaseButton.vue';
 

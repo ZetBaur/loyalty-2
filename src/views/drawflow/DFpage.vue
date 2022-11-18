@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import drawflow from './DrawFlow.vue';
+import drawflow from './components/DrawFlow.vue';
 </script>
