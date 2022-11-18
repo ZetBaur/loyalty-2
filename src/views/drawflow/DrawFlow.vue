@@ -1,6 +1,8 @@
 <template>
     <el-container>
-        <div class="canvas-toolbar">
+        <HeaderView @save="exportEditor" />
+
+        <div class="canvas-toolbar mt-4">
             <!-- <ul>
                 <li
                     v-for="n in listNodes"
@@ -21,8 +23,6 @@
             <BaseButton text="Этапы" @action="addStageNode">
                 <StageIcon />
             </BaseButton>
-
-            <BaseButton text="Экспорт" @action="exportEditor" />
         </div>
 
         <el-main class="p-0">
@@ -41,6 +41,7 @@ import styleDrawflow from 'drawflow/dist/drawflow.min.css';
 import style from '@/assets/styles/drawflow.scss';
 import ConversionIcon from '@/components/icons/ConversionIcon.vue';
 import StageIcon from '@/components/icons/StageIcon.vue';
+import HeaderView from './HeaderView.vue';
 
 import {
     onMounted,
