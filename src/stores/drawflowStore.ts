@@ -6,5 +6,7 @@ export const useDrawflowStore = defineStore('drawflow', () => {
 
     const currentNodes = ref(null);
 
-    return { nodeSelected, currentNodes };
+    const optionsDialog = ref(false);
+
+    return { nodeSelected, currentNodes, optionsDialog };
 });
