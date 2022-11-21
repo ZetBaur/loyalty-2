@@ -58,7 +58,6 @@ const onAdd = () => {
     const newNode = {
         type: 'custom',
         id: id,
-        label: `Node ${id}`,
 
         position: { x: 0, y: 0 },
         targetPosition: Position.Left
