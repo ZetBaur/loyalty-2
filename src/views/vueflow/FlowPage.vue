@@ -1,15 +1,9 @@
 <template>
-    <HeaderView />
-
-    <div class="flex it mt-4">
-        <BaseButton @click="onAdd" text="Конверсия" class="mr-4">
-            <ConversionIcon />
-        </BaseButton>
-
-        <BaseButton text="Этапы">
-            <StageIcon />
-        </BaseButton>
-    </div>
+    <HeaderView
+        @save="save"
+        @add-conversion-node="onAdd"
+        @add-stage-node="onAdd"
+    />
 
     <VueFlow
         v-model="elements"
@@ -20,6 +14,7 @@
         :max-zoom="4"
         fit-view-on-init
         @nodeClick="nodeClick"
+        @nodesChange="nodesChange"
     >
         <template #node-custom="{ data }">
             <CustomNode :data="data" />
@@ -30,27 +25,30 @@
 <script setup>
 import { VueFlow, useVueFlow, Position } from '@vue-flow/core';
 import { ref, onMounted } from 'vue';
-// import { initialElements } from './initial-elements.ts';
 import HeaderView from './components/HeaderView.vue';
-import BaseButton from '@/components/ui/BaseButton.vue';
-import ConversionIcon from '@/components/icons/ConversionIcon.vue';
-import StageIcon from '@/components/icons/StageIcon.vue';
 import CustomNode from './nodes/CustomNode.vue';
 
 const { onConnect, addEdges, nodes, addNodes } = useVueFlow();
 
 const elements = ref([]);
 
+const save = () => {
+    console.log('save');
+};
+
 const nodeClick = (val) => {
     console.log('nodeClick', val.node.id);
 };
 
 onConnect((params) => {
-    console.log('onConnect', params);
+    // console.log('onConnect', params);
 
     addEdges([params]);
-    // elements.value.push(params);
 });
+
+const nodesChange = () => {
+    console.log('nodesChange', elements.value);
+};
 
 const onAdd = () => {
     const id = nodes.value.length + 1;
@@ -63,8 +61,6 @@ const onAdd = () => {
     };
 
     addNodes([newNode]);
-
-    // elements.value.push(...nodes);
 };
 
 onMounted(() => {
@@ -93,7 +89,9 @@ onMounted(() => {
             sourceHandle: 'a',
             target: '2',
             animated: true,
-            style: () => ({})
+            style: () => ({
+                color: 'red'
+            })
         },
         {
             id: 'e1b-3',
