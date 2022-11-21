@@ -82,6 +82,7 @@ internalInstance.appContext.app._context.config.globalProperties.$df = editor;
 
 function exportEditor() {
     nodesData.value = editor.value.export();
+    console.log(nodesData.value);
 }
 
 // const addConversionNode = () => {
@@ -115,20 +116,26 @@ function exportEditor() {
 const handleNodeEvents = (event) => {
     DFstore.currentNodes = editor.value.export().drawflow.Home.data;
 
+    Object.entries(DFstore.currentNodes).forEach(([key, value]) => {
+        console.log(key, value);
+
+        DFstore.currentNodes.push(value);
+
+        console.log(DFstore.currentNodes);
+    });
+
     if (event.target.attributes.id) {
         console.log('event', event.target.attributes.id.value);
-
-        // delete node
 
         if (event.target.attributes.id.value === 'delete-button') {
             editor.value.removeNodeId('node-' + DFstore.nodeSelected);
         }
 
-        // add node
-
         if (event.target.attributes.id.value === 'add-button') {
             console.log('currentNodes', DFstore.currentNodes);
             console.log('nodeSelected', DFstore.nodeSelected);
+
+            DFstore.optionsDialog = true;
         }
     }
 };
@@ -160,7 +167,7 @@ function addNodeToDrawFlow(name, pos_x, pos_y) {
         pos_x,
         pos_y,
         name,
-        {},
+        { options: false },
         name,
         'vue'
     );

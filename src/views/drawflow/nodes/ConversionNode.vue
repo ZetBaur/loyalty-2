@@ -26,7 +26,7 @@
         ></div>
     </div>
 
-    <div class="node-options">
+    <div v-if="DFstore.optionsDialog" class="node-options">
         <div>Этап</div>
         <div>Конверсия</div>
     </div>

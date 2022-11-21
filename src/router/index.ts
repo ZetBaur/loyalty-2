@@ -25,9 +25,9 @@ const router = createRouter({
         },
 
         {
-            path: '/canvas',
-            name: 'canvas',
-            component: () => import('@/views/canvas/CanvasPage.vue'),
+            path: '/flowpage',
+            name: 'flowpage',
+            component: () => import('@/views/vueflow/FlowPage.vue'),
             meta: {
                 layout: 'main',
                 auth: false

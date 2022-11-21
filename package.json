@@ -12,6 +12,7 @@
     "dependencies": {
         "-": "^0.0.1",
         "@element-plus/icons-vue": "^2.0.10",
+        "@vue-flow/core": "^1.5.0",
         "@vueuse/core": "^9.3.0",
         "autoprefixer": "^10.4.13",
         "axios": "^1.1.3",

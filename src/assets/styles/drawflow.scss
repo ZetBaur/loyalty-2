@@ -63,9 +63,9 @@
         border-color: #d4b4f1;
     }
 
-    // & .node-adds {
-    //     display: block;
-    // }
+    & .node-options {
+        display: block;
+    }
 
     & .node-icons {
         display: flex;
@@ -78,9 +78,8 @@
     top: -10px;
     padding: 8px 0;
     border: 1px solid #e4e4e4;
-    // filter: drop-shadow(0px 4px 5px rgba(238, 238, 238, 0.63));
     border-radius: 0px 15px 15px 15px;
-    display: block;
+    display: none;
 
     & div {
         padding: 7px 13px;
