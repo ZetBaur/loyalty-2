@@ -29,7 +29,7 @@
 
 <script setup>
 import { VueFlow, useVueFlow, Position } from '@vue-flow/core';
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted } from 'vue';
 // import { initialElements } from './initial-elements.ts';
 import HeaderView from './components/HeaderView.vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
@@ -58,14 +58,13 @@ const onAdd = () => {
     const newNode = {
         type: 'custom',
         id: id,
-
         position: { x: 0, y: 0 },
         targetPosition: Position.Left
     };
 
     addNodes([newNode]);
 
-    elements.value.push(...nodes);
+    // elements.value.push(...nodes);
 };
 
 onMounted(() => {

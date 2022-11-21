@@ -2,7 +2,7 @@
     <div class="custom-node">
         <Handle
             id="a"
-            type="source"
+            type="target"
             :position="Position.Left"
             :style="sourceHandleStyleA"
         />
