@@ -52,9 +52,9 @@ import {
 import StageNode from '../nodes/StageNode.vue';
 import ConversionNode from '../nodes/ConversionNode.vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
-import { useDrawflowStore } from '@/stores/drawflowStore';
+import { useDFstore } from '@/stores/drawflowStore';
 
-const DFStore = useDrawflowStore();
+const DFstore = useDFstore();
 
 const listNodes = readonly([
     {
@@ -113,7 +113,7 @@ function exportEditor() {
 // };
 
 const handleNodeEvents = (event) => {
-    DFStore.currentNodes = editor.value.export().drawflow.Home.data;
+    DFstore.currentNodes = editor.value.export().drawflow.Home.data;
 
     if (event.target.attributes.id) {
         console.log('event', event.target.attributes.id.value);
@@ -121,14 +121,14 @@ const handleNodeEvents = (event) => {
         // delete node
 
         if (event.target.attributes.id.value === 'delete-button') {
-            editor.value.removeNodeId('node-' + DFStore.nodeSelected);
+            editor.value.removeNodeId('node-' + DFstore.nodeSelected);
         }
 
         // add node
 
         if (event.target.attributes.id.value === 'add-button') {
-            console.log('currentNodes', DFStore.currentNodes);
-            console.log('nodeSelected', DFStore.nodeSelected);
+            console.log('currentNodes', DFstore.currentNodes);
+            console.log('nodeSelected', DFstore.nodeSelected);
         }
     }
 };
@@ -188,7 +188,7 @@ onMounted(() => {
     editor.value.registerNode('StageNode', StageNode, {}, {});
     editor.value.registerNode('ConversionNode', ConversionNode, {}, {});
 
-    editor.value.on('nodeSelected', (id) => (DFStore.nodeSelected = id));
+    editor.value.on('nodeSelected', (id) => (DFstore.nodeSelected = id));
 
     editor.value.on('click', (event) => handleNodeEvents(event));
 });

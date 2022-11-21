@@ -36,6 +36,9 @@
 
 <script setup>
 import { ref, getCurrentInstance, nextTick, onMounted } from 'vue';
+import { useDFstore } from '@/stores/drawflowStore';
+
+const DFstore = useDFstore();
 
 const el = ref(null);
 let df = null;
