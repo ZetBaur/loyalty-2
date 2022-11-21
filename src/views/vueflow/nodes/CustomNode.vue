@@ -3,6 +3,13 @@
         <Handle
             id="a"
             type="source"
+            :position="Position.Left"
+            :style="sourceHandleStyleA"
+        />
+
+        <Handle
+            id="a"
+            type="source"
             :position="Position.Right"
             :style="sourceHandleStyleA"
         />

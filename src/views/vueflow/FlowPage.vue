@@ -51,7 +51,9 @@ const {
 const elements = ref([]);
 
 onConnect((params) => {
-    console.log('onConnect', params);
+    // console.log('onConnect', params);
+
+    console.log('nodes', nodes.value);
 
     addEdges([params]);
 });
@@ -71,44 +73,44 @@ const onAdd = () => {
     addNodes([newNode]);
 };
 
-onMounted(() => {
-    elements.value = [
-        {
-            id: '1',
-            type: 'custom',
-            data: {},
-            position: { x: 0, y: 50 }
-        },
-        {
-            id: '2',
-            type: 'output',
-            position: { x: 350, y: 25 },
-            targetPosition: Position.Left
-        },
-        {
-            id: '3',
-            type: 'output',
-            position: { x: 350, y: 200 },
-            targetPosition: Position.Left
-        },
-        {
-            id: 'e1a-2',
-            source: '1',
-            sourceHandle: 'a',
-            target: '2',
-            animated: true,
-            style: () => ({})
-        },
-        {
-            id: 'e1b-3',
-            source: '1',
-            sourceHandle: 'b',
-            target: '3',
-            animated: true,
-            style: () => ({})
-        }
-    ];
-});
+// onMounted(() => {
+//     elements.value = [
+//         {
+//             id: '1',
+//             type: 'custom',
+//             data: {},
+//             position: { x: 0, y: 50 }
+//         },
+//         {
+//             id: '2',
+//             type: 'output',
+//             position: { x: 350, y: 25 },
+//             targetPosition: Position.Left
+//         },
+//         {
+//             id: '3',
+//             type: 'output',
+//             position: { x: 350, y: 200 },
+//             targetPosition: Position.Left
+//         },
+//         {
+//             id: 'e1a-2',
+//             source: '1',
+//             sourceHandle: 'a',
+//             target: '2',
+//             animated: true,
+//             style: () => ({})
+//         },
+//         {
+//             id: 'e1b-3',
+//             source: '1',
+//             sourceHandle: 'b',
+//             target: '3',
+//             animated: true,
+//             style: () => ({})
+//         }
+//     ];
+// });
 </script>
 
 <style>
