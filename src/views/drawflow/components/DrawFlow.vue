@@ -3,28 +3,22 @@
         <HeaderView @save="exportEditor" />
 
         <div class="flex it mt-4">
-            <!-- <ul>
-                <li
-                    v-for="n in listNodes"
-                    :key="n"
-                    draggable="true"
-                    :data-node="n.item"
-                    @dragstart="drag($event)"
-                    class="drag-drawflow"
-                >
-                    <BaseButton :text="n.name" />
-                </li>
-            </ul> -->
-
             <BaseButton
-                @action="addConversionNode"
                 text="Конверсия"
                 class="mr-4"
+                draggable="true"
+                data-node="ConversionNode"
+                @dragstart="drag($event)"
             >
                 <ConversionIcon />
             </BaseButton>
 
-            <BaseButton @action="addStageNode" text="Этапы">
+            <BaseButton
+                text="Этапы"
+                draggable="true"
+                data-node="StageNode"
+                @dragstart="drag($event)"
+            >
                 <StageIcon />
             </BaseButton>
         </div>
@@ -52,9 +46,8 @@ import {
     h,
     getCurrentInstance,
     render,
-    // readonly,
-    ref,
-    computed
+    readonly,
+    ref
 } from 'vue';
 import StageNode from '../nodes/StageNode.vue';
 import ConversionNode from '../nodes/ConversionNode.vue';
@@ -63,14 +56,21 @@ import { useDrawflowStore } from '@/stores/drawflowStore';
 
 const drawflowStore = useDrawflowStore();
 
-// const listNodes = readonly([
-//     {
-//         name: 'StageNode',
-//         item: 'StageNode',
-//         input: 1,
-//         output: 2
-//     }
-// ]);
+const listNodes = readonly([
+    {
+        name: 'StageNode',
+        item: 'StageNode',
+        input: 0,
+        output: 0
+    },
+
+    {
+        name: 'ConversionNode',
+        item: 'ConversionNode',
+        input: 0,
+        output: 0
+    }
+]);
 
 const editor = shallowRef({});
 const nodesData = ref({});
@@ -78,89 +78,89 @@ const Vue = { version: 3, h, render };
 const internalInstance = getCurrentInstance();
 internalInstance.appContext.app._context.config.globalProperties.$df = editor;
 
-const currentData = computed(() => nodesData.value.drawflow.Home.data);
-
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 function exportEditor() {
     nodesData.value = editor.value.export();
-    console.log(currentData.value);
 }
 
-const addConversionNode = () => {
-    editor.value.addNode(
-        'ConversionNode',
-        1,
-        1,
-        70,
-        70,
-        'ConversionNode',
-        {},
-        'ConversionNode',
-        'vue'
-    );
-};
+// const addConversionNode = () => {
+//     editor.value.addNode(
+//         'ConversionNode',
+//         1,
+//         1,
+//         70,
+//         70,
+//         'ConversionNode',
+//         {},
+//         'ConversionNode',
+//         'vue'
+//     );
+// };
 
-const addStageNode = () => {
-    editor.value.addNode(
-        'StageNode',
-        1,
-        1,
-        200,
-        70,
-        'StageNode',
-        {},
-        'StageNode',
-        'vue'
-    );
-};
+// const addStageNode = () => {
+//     editor.value.addNode(
+//         'StageNode',
+//         1,
+//         1,
+//         200,
+//         70,
+//         'StageNode',
+//         {},
+//         'StageNode',
+//         'vue'
+//     );
+// };
 
 const handleNodeEvents = (event) => {
+    drawflowStore.currentNodes = editor.value.export().drawflow.Home.data;
+
     if (event.target.attributes.id) {
-        console.log('fffff', event.target.attributes.id.value);
+        console.log('event', event.target.attributes.id.value);
 
         if (event.target.attributes.id.value === 'delete-button') {
             editor.value.removeNodeId('node-' + drawflowStore.nodeSelected);
         }
 
         if (event.target.attributes.id.value === 'add-button') {
-            drawflowStore.showOptions = true;
+            console.log('currentNodes', drawflowStore.currentNodes);
+            console.log('nodeSelected', drawflowStore.nodeSelected);
         }
     }
 };
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// function addNodeToDrawFlow(name, pos_x, pos_y) {
-//     pos_x =
-//         pos_x *
-//             (editor.value.precanvas.clientWidth /
-//                 (editor.value.precanvas.clientWidth * editor.value.zoom)) -
-//         editor.value.precanvas.getBoundingClientRect().x *
-//             (editor.value.precanvas.clientWidth /
-//                 (editor.value.precanvas.clientWidth * editor.value.zoom));
-//     pos_y =
-//         pos_y *
-//             (editor.value.precanvas.clientHeight /
-//                 (editor.value.precanvas.clientHeight * editor.value.zoom)) -
-//         editor.value.precanvas.getBoundingClientRect().y *
-//             (editor.value.precanvas.clientHeight /
-//                 (editor.value.precanvas.clientHeight * editor.value.zoom));
+function addNodeToDrawFlow(name, pos_x, pos_y) {
+    pos_x =
+        pos_x *
+            (editor.value.precanvas.clientWidth /
+                (editor.value.precanvas.clientWidth * editor.value.zoom)) -
+        editor.value.precanvas.getBoundingClientRect().x *
+            (editor.value.precanvas.clientWidth /
+                (editor.value.precanvas.clientWidth * editor.value.zoom));
+    pos_y =
+        pos_y *
+            (editor.value.precanvas.clientHeight /
+                (editor.value.precanvas.clientHeight * editor.value.zoom)) -
+        editor.value.precanvas.getBoundingClientRect().y *
+            (editor.value.precanvas.clientHeight /
+                (editor.value.precanvas.clientHeight * editor.value.zoom));
 
-//     const nodeSelected = listNodes.find((el) => el.item == name);
+    const nodeSelected = listNodes.find((el) => el.item == name);
 
-//     editor.value.addNode(
-//         name,
-//         nodeSelected.input,
-//         nodeSelected.output,
-//         pos_x,
-//         pos_y,
-//         name,
-//         {},
-//         name,
-//         'vue'
-//     );
-// }
+    editor.value.addNode(
+        name,
+        nodeSelected.input,
+        nodeSelected.output,
+        pos_x,
+        pos_y,
+        name,
+        {},
+        name,
+        'vue'
+    );
+}
 
 onMounted(() => {
     var elements = document.getElementsByClassName('drag-drawflow');
@@ -187,8 +187,6 @@ onMounted(() => {
     editor.value.on('nodeSelected', (id) => (drawflowStore.nodeSelected = id));
 
     editor.value.on('click', (event) => handleNodeEvents(event));
-
-    // editor.value.useuuid = true;
 });
 
 //=====================================================================================
