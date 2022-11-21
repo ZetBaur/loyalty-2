@@ -19,6 +19,7 @@
         :min-zoom="0.2"
         :max-zoom="4"
         fit-view-on-init
+        @nodeClick="nodeClick"
     >
         <template #node-custom="{ data }">
             <CustomNode :data="data" />
@@ -28,7 +29,7 @@
 
 <script setup>
 import { VueFlow, useVueFlow, Position } from '@vue-flow/core';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 // import { initialElements } from './initial-elements.ts';
 import HeaderView from './components/HeaderView.vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
@@ -36,26 +37,19 @@ import ConversionIcon from '@/components/icons/ConversionIcon.vue';
 import StageIcon from '@/components/icons/StageIcon.vue';
 import CustomNode from './nodes/CustomNode.vue';
 
-const { onConnect, addEdges } = useVueFlow();
-
-const {
-    nodes,
-    addNodes
-    // setNodes,
-    // setEdges,
-    // dimensions,
-    // setTransform,
-    // toObject
-} = useVueFlow();
+const { onConnect, addEdges, nodes, addNodes } = useVueFlow();
 
 const elements = ref([]);
 
-onConnect((params) => {
-    // console.log('onConnect', params);
+const nodeClick = (val) => {
+    console.log('nodeClick', val.node.id);
+};
 
-    console.log('nodes', nodes.value);
+onConnect((params) => {
+    console.log('onConnect', params);
 
     addEdges([params]);
+    // elements.value.push(params);
 });
 
 const onAdd = () => {
@@ -71,46 +65,48 @@ const onAdd = () => {
     };
 
     addNodes([newNode]);
+
+    elements.value.push(...nodes);
 };
 
-// onMounted(() => {
-//     elements.value = [
-//         {
-//             id: '1',
-//             type: 'custom',
-//             data: {},
-//             position: { x: 0, y: 50 }
-//         },
-//         {
-//             id: '2',
-//             type: 'output',
-//             position: { x: 350, y: 25 },
-//             targetPosition: Position.Left
-//         },
-//         {
-//             id: '3',
-//             type: 'output',
-//             position: { x: 350, y: 200 },
-//             targetPosition: Position.Left
-//         },
-//         {
-//             id: 'e1a-2',
-//             source: '1',
-//             sourceHandle: 'a',
-//             target: '2',
-//             animated: true,
-//             style: () => ({})
-//         },
-//         {
-//             id: 'e1b-3',
-//             source: '1',
-//             sourceHandle: 'b',
-//             target: '3',
-//             animated: true,
-//             style: () => ({})
-//         }
-//     ];
-// });
+onMounted(() => {
+    elements.value = [
+        {
+            id: '1',
+            type: 'custom',
+            data: {},
+            position: { x: 0, y: 50 }
+        },
+        {
+            id: '2',
+            type: 'output',
+            position: { x: 350, y: 25 },
+            targetPosition: Position.Left
+        },
+        {
+            id: '3',
+            type: 'output',
+            position: { x: 350, y: 200 },
+            targetPosition: Position.Left
+        },
+        {
+            id: 'e1a-2',
+            source: '1',
+            sourceHandle: 'a',
+            target: '2',
+            animated: true,
+            style: () => ({})
+        },
+        {
+            id: 'e1b-3',
+            source: '1',
+            sourceHandle: 'b',
+            target: '3',
+            animated: true,
+            style: () => ({})
+        }
+    ];
+});
 </script>
 
 <style>
