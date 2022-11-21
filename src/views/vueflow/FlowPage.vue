@@ -46,8 +46,10 @@ onConnect((params) => {
     addEdges([params]);
 });
 
-const nodesChange = () => {
-    console.log('nodesChange', elements.value);
+const nodesChange = (val) => {
+    console.log(val);
+
+    // console.log('nodesChange', elements.value);
 };
 
 const onAdd = () => {
