@@ -110,6 +110,7 @@ onMounted(() => {
             position: { x: 350, y: 200 },
             targetPosition: Position.Left
         },
+
         {
             id: 'e1a-2',
             type: 'customEdge',
@@ -119,7 +120,10 @@ onMounted(() => {
             animated: true,
             style: () => ({
                 color: 'red'
-            })
+            }),
+            data: {
+                label: 'No'
+            }
         },
         {
             id: 'e1b-3',

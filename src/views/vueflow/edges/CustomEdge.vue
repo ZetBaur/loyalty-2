@@ -12,7 +12,11 @@
             }"
             class="nodrag nopan"
         >
-            <button class="edgebutton" @click="removeEdges([id])">×</button>
+            <!-- <button class="edgebutton" @click="removeEdges([id])">×</button> -->
+
+            <span class="text-[10px] text-[#2D2F32]">{{
+                props.data.label
+            }}</span>
         </div>
     </EdgeLabelRenderer>
 </template>
@@ -21,8 +25,8 @@
 import {
     BaseEdge,
     EdgeLabelRenderer,
-    getBezierPath,
-    useVueFlow
+    getBezierPath
+    // useVueFlow
 } from '@vue-flow/core';
 import { computed } from 'vue';
 
@@ -69,7 +73,7 @@ const props = defineProps({
     }
 });
 
-const { removeEdges } = useVueFlow();
+// const { removeEdges } = useVueFlow();
 
 const path = computed(() => getBezierPath(props));
 </script>
