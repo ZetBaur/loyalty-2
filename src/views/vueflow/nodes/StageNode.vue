@@ -12,6 +12,7 @@
         type="source"
         :position="Position.Right"
         :style="rightTopHandleStyle"
+        class="right-top-handle"
     />
 
     <Handle
@@ -19,6 +20,7 @@
         type="source"
         :position="Position.Right"
         :style="rightBottomHandleStyle"
+        class="right-bottom-handle"
     />
 
     <Handle
@@ -26,6 +28,7 @@
         type="source"
         :position="Position.Right"
         :style="rightMiddleHandleStyle"
+        class="right-middle-handle"
     />
 
     <span></span>
@@ -104,7 +107,46 @@ const rightMiddleHandleStyle = computed(() => ({
     width: 19px !important;
     height: 19px !important;
     background: #ffffff !important;
-    border: 1px solid red !important;
+    border: 1px solid #ffffff !important;
+}
+.right-top-handle,
+.right-bottom-handle,
+.right-middle-handle,
+.left-handle {
+    &::before {
+        content: '';
+        width: 13px;
+        height: 13px;
+        background: #ffffff;
+        border: 2px solid #d2d2d2;
+        border-radius: 50%;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+    }
+
+    &::after {
+        content: '';
+        width: 5px;
+        height: 5px;
+        background: #d2d2d2;
+        border-radius: 50%;
+        position: absolute;
+        top: 6px;
+        left: 6px;
+    }
+}
+
+.right-top-handle {
+    &::before {
+        border-color: #8ce4ca;
+    }
+}
+
+.right-bottom-handle {
+    &::before {
+        border-color: #e68c8c;
+    }
 }
 
 .vue-flow__node-stage {

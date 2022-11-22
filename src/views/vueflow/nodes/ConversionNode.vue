@@ -4,6 +4,7 @@
         type="target"
         :position="Position.Left"
         :style="leftHandleStyle"
+        class="left-handle"
     />
 
     <Handle
@@ -11,6 +12,7 @@
         type="source"
         :position="Position.Right"
         :style="rightTopHandleStyle"
+        class="right-top-handle"
     />
 
     <Handle
@@ -18,6 +20,7 @@
         type="source"
         :position="Position.Right"
         :style="rightBottomHandleStyle"
+        class="right-bottom-handle"
     />
 
     <Handle
@@ -25,6 +28,7 @@
         type="source"
         :position="Position.Right"
         :style="rightMiddleHandleStyle"
+        class="right-middle-handle"
     />
 
     <span></span>
