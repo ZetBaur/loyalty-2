@@ -3,28 +3,28 @@
         id="c"
         type="target"
         :position="Position.Left"
-        :style="sourceHandleStyleC"
+        :style="leftHandleStyle"
     />
 
     <Handle
         id="a"
         type="source"
         :position="Position.Right"
-        :style="sourceHandleStyleA"
+        :style="rightTopHandleStyle"
     />
 
     <Handle
         id="b"
         type="source"
         :position="Position.Right"
-        :style="sourceHandleStyleB"
+        :style="rightBottomHandleStyle"
     />
 
     <Handle
         id="d"
         type="source"
         :position="Position.Right"
-        :style="sourceHandleStyleD"
+        :style="rightMiddleHandleStyle"
     />
 
     <span></span>
@@ -42,12 +42,9 @@
         <div>Конверсия</div>
     </div>
 
-    <div class="stage-description">
-        <div>Второй этап - {{}}</div>
-        <div>Размер сегмента - {{}}</div>
-    </div>
+    <div class="conversion-description">Конверсия</div>
 
-    <img src="@/assets/images/stageicon.svg" />
+    <img src="@/assets/images/conversionicon.svg" />
 </template>
 
 <script setup>
@@ -74,33 +71,32 @@ const addHandler = () => {
     showOptionsDialog.value = true;
 };
 
-const sourceHandleStyleC = computed(() => ({
-    backgroundColor: props.data.color,
-    top: '50%',
-    transform: 'translateY(-50%)'
+const leftHandleStyle = computed(() => ({
+    // top: '50%',
+    // transform: 'translateY(-50%)'
 }));
 
-const sourceHandleStyleA = computed(() => ({
-    backgroundColor: props.data.color,
-    top: '19px',
-    bottom: 'auto'
+const rightTopHandleStyle = computed(() => ({
+    // top: '18px',
+    // right: '-11px',
+    // bottom: 'auto'
 }));
 
-const sourceHandleStyleB = computed(() => ({
-    backgroundColor: props.data.color,
-    bottom: '13px',
+const rightBottomHandleStyle = computed(() => ({
+    bottom: '-1px',
+    right: '-11px',
     top: 'auto'
 }));
 
-const sourceHandleStyleD = computed(() => ({
-    backgroundColor: props.data.color,
+const rightMiddleHandleStyle = computed(() => ({
     top: '50%',
+    right: '-11px',
     transform: 'translateY(-50%)'
 }));
 </script>
 
 <style lang="scss">
-.vue-flow__node-stage {
+.vue-flow__node-conversion {
     width: 80px;
     height: 80px;
     border: 2px solid #e4e4e4;
@@ -110,10 +106,10 @@ const sourceHandleStyleD = computed(() => ({
     align-items: center;
 
     &.selected {
-        border-color: #3a9023;
+        // border-color: #3a9023;
 
         & span {
-            border-color: #c0dbb8;
+            border-color: #d4b4f1;
         }
 
         & .action-buttons {
@@ -185,25 +181,32 @@ const sourceHandleStyleD = computed(() => ({
     }
 }
 
-.stage-description {
+.conversion-description {
     position: absolute;
-    bottom: -70px;
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
     text-align: center;
+    bottom: -43px;
+    font-size: 18px;
+    font-weight: 500;
+}
 
-    & div {
-        &:nth-child(1) {
-            font-size: 18px;
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
+.vue-flow__handle {
+    width: 19px !important;
+    height: 19px !important;
+    background: #ffffff !important;
+    border: 1px solid red !important;
+}
 
-        &:nth-child(2) {
-            font-size: 16px;
-            font-weight: 400;
-        }
-    }
+.vue-flow__handle-left {
+    left: -11px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
+.vue-flow__handle-right {
+    right: -11px !important;
+    // top: 18px !important;
 }
 </style>

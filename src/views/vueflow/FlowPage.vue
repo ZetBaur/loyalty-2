@@ -9,9 +9,9 @@
         v-model="elements"
         class="basicflow"
         :default-edge-options="{ type: 'customEdge', animated: true }"
-        :default-zoom="1.5"
+        :default-zoom="1.1"
         :min-zoom="0.2"
-        :max-zoom="4"
+        :max-zoom="3"
         fit-view-on-init
         @nodeClick="nodeClick"
         @nodesChange="nodesChange"
@@ -22,6 +22,10 @@
 
         <template #node-stage="{ data }">
             <StageNode :data="data" />
+        </template>
+
+        <template #node-conversion="{ data }">
+            <ConversionNode :data="data" />
         </template>
 
         <template #edge-customEdge="props">
@@ -36,6 +40,7 @@ import { ref, onMounted } from 'vue';
 import HeaderView from './components/HeaderView.vue';
 import CustomNode from './nodes/CustomNode.vue';
 import StageNode from './nodes/StageNode.vue';
+import ConversionNode from './nodes/ConversionNode.vue';
 import CustomEdge from './edges/CustomEdge.vue';
 
 const { onConnect, addEdges, nodes, addNodes } = useVueFlow();
@@ -105,7 +110,7 @@ onMounted(() => {
         },
         {
             id: '3',
-            type: 'output',
+            type: 'conversion',
             position: { x: 350, y: 200 },
             targetPosition: Position.Left
         },

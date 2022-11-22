@@ -14,7 +14,7 @@
         >
             <!-- <button class="edgebutton" @click="removeEdges([id])">×</button> -->
 
-            <span class="text-[10px] text-[#2D2F32]">{{
+            <span class="text-[10px] text-[#2D2F32] bg-white">{{
                 props.data.label
             }}</span>
         </div>
