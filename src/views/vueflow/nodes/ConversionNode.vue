@@ -72,14 +72,15 @@ const addHandler = () => {
 };
 
 const leftHandleStyle = computed(() => ({
-    // top: '50%',
-    // transform: 'translateY(-50%)'
+    top: '50%',
+    left: '-10px',
+    transform: 'translateY(-50%)'
 }));
 
 const rightTopHandleStyle = computed(() => ({
-    // top: '18px',
-    // right: '-11px',
-    // bottom: 'auto'
+    top: '18px',
+    right: '-11px',
+    bottom: 'auto'
 }));
 
 const rightBottomHandleStyle = computed(() => ({
@@ -199,14 +200,14 @@ const rightMiddleHandleStyle = computed(() => ({
     border: 1px solid red !important;
 }
 
-.vue-flow__handle-left {
-    left: -11px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-}
+// .vue-flow__handle-left {
+//     left: -11px !important;
+//     top: 50% !important;
+//     transform: translateY(-50%) !important;
+// }
 
-.vue-flow__handle-right {
-    right: -11px !important;
-    // top: 18px !important;
-}
+// .vue-flow__handle-right {
+//     right: -11px !important;
+//     // top: 18px !important;
+// }
 </style>

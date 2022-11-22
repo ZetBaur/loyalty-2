@@ -3,28 +3,28 @@
         id="c"
         type="target"
         :position="Position.Left"
-        :style="sourceHandleStyleC"
+        :style="leftHandleStyle"
     />
 
     <Handle
         id="a"
         type="source"
         :position="Position.Right"
-        :style="sourceHandleStyleA"
+        :style="rightTopHandleStyle"
     />
 
     <Handle
         id="b"
         type="source"
         :position="Position.Right"
-        :style="sourceHandleStyleB"
+        :style="rightBottomHandleStyle"
     />
 
     <Handle
         id="d"
         type="source"
         :position="Position.Right"
-        :style="sourceHandleStyleD"
+        :style="rightMiddleHandleStyle"
     />
 
     <span></span>
@@ -73,28 +73,26 @@ const showOptionsDialog = ref(false);
 const addHandler = () => {
     showOptionsDialog.value = true;
 };
-
-const sourceHandleStyleC = computed(() => ({
-    backgroundColor: props.data.color,
+const leftHandleStyle = computed(() => ({
     top: '50%',
     transform: 'translateY(-50%)'
 }));
 
-const sourceHandleStyleA = computed(() => ({
-    backgroundColor: props.data.color,
-    top: '19px',
+const rightTopHandleStyle = computed(() => ({
+    top: '18px',
+    right: '-11px',
     bottom: 'auto'
 }));
 
-const sourceHandleStyleB = computed(() => ({
-    backgroundColor: props.data.color,
-    bottom: '13px',
+const rightBottomHandleStyle = computed(() => ({
+    bottom: '-1px',
+    right: '-11px',
     top: 'auto'
 }));
 
-const sourceHandleStyleD = computed(() => ({
-    backgroundColor: props.data.color,
+const rightMiddleHandleStyle = computed(() => ({
     top: '50%',
+    right: '-11px',
     transform: 'translateY(-50%)'
 }));
 </script>
