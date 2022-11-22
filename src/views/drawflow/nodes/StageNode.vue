@@ -55,7 +55,7 @@ onMounted(async () => {
 });
 </script>
 
-<style lang="scss">
+<!-- <style lang="scss">
 .edit-button,
 .add-button,
 .delete-button {
@@ -72,4 +72,4 @@ onMounted(async () => {
 .delete-button {
     background-image: url('@/assets/images/deleteicon.svg');
 }
-</style>
+</style> -->
