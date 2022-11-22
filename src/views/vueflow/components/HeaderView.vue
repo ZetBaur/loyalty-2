@@ -1,7 +1,5 @@
 <template>
     <div class="flex items-center justify-between mb-4">
-        <!--  -->
-
         <div class="flex items-center">
             <el-icon
                 @click="router.go(-1)"
@@ -15,8 +13,6 @@
             <EditIcon class="cursor-pointer" />
         </div>
 
-        <!--  -->
-
         <div class="flex items-center">
             <BaseButton
                 class="mx-2"
@@ -24,10 +20,9 @@
                 color="green"
                 @action="emit('save')"
             />
+
             <BaseButton @action="router.go(-1)" class="mx-2" text="Отменить" />
         </div>
-
-        <!--  -->
     </div>
 
     <hr />

@@ -1,8 +1,8 @@
 <template>
     <HeaderView
         @save="save"
-        @add-conversion-node="onAdd"
-        @add-stage-node="onAdd"
+        @add-conversion-node="addStageNode"
+        @add-stage-node="addConversionNode"
     />
 
     <VueFlow
@@ -57,7 +57,20 @@ const nodesChange = (val) => {
     // console.log('nodesChange', elements.value);
 };
 
-const onAdd = () => {
+const addStageNode = () => {
+    const id = nodes.value.length + 1;
+
+    const newNode = {
+        type: 'custom',
+        id: id,
+        position: { x: 0, y: 0 },
+        targetPosition: Position.Left
+    };
+
+    addNodes([newNode]);
+};
+
+const addConversionNode = () => {
     const id = nodes.value.length + 1;
 
     const newNode = {
