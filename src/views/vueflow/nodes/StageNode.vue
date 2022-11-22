@@ -1,7 +1,7 @@
 <template>
     <div class="custom-node">
         <Handle
-            id="a"
+            id="c"
             type="target"
             :position="Position.Left"
             :style="sourceHandleStyleA"
