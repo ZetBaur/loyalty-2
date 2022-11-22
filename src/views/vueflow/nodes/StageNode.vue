@@ -4,6 +4,7 @@
         type="target"
         :position="Position.Left"
         :style="leftHandleStyle"
+        class="left-handle"
     />
 
     <Handle
@@ -75,6 +76,7 @@ const addHandler = () => {
 };
 const leftHandleStyle = computed(() => ({
     top: '50%',
+    left: '-10px',
     transform: 'translateY(-50%)'
 }));
 
@@ -98,6 +100,13 @@ const rightMiddleHandleStyle = computed(() => ({
 </script>
 
 <style lang="scss">
+.vue-flow__handle {
+    width: 19px !important;
+    height: 19px !important;
+    background: #ffffff !important;
+    border: 1px solid red !important;
+}
+
 .vue-flow__node-stage {
     width: 80px;
     height: 80px;
