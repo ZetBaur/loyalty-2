@@ -4,7 +4,7 @@
             id="c"
             type="target"
             :position="Position.Left"
-            :style="sourceHandleStyleA"
+            :style="sourceHandleStyleC"
         />
 
         <Handle
@@ -19,6 +19,13 @@
             type="source"
             :position="Position.Right"
             :style="sourceHandleStyleB"
+        />
+
+        <Handle
+            id="d"
+            type="source"
+            :position="Position.Right"
+            :style="sourceHandleStyleD"
         />
     </div>
 </template>
@@ -36,17 +43,28 @@ const props = defineProps({
 
 // const emit = defineEmits(['change', 'gradient']);
 
+const sourceHandleStyleC = computed(() => ({
+    backgroundColor: props.data.color,
+    top: '50%',
+    transform: 'translateY(-50%)'
+}));
+
 const sourceHandleStyleA = computed(() => ({
     backgroundColor: props.data.color,
-    filter: 'invert(100%)',
-    top: '10px'
+    top: '19px',
+    bottom: 'auto'
 }));
 
 const sourceHandleStyleB = computed(() => ({
     backgroundColor: props.data.color,
-    filter: 'invert(100%)',
-    bottom: '10px',
+    bottom: '13px',
     top: 'auto'
+}));
+
+const sourceHandleStyleD = computed(() => ({
+    backgroundColor: props.data.color,
+    top: '50%',
+    transform: 'translateY(-50%)'
 }));
 </script>
 
@@ -54,6 +72,7 @@ const sourceHandleStyleB = computed(() => ({
 .custom-node {
     width: 80px;
     height: 80px;
-    border: 1px solid grey;
+    border: 2px solid #e4e4e4;
+    border-radius: 10px;
 }
 </style>

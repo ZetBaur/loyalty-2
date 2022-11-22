@@ -92,7 +92,7 @@ onMounted(() => {
     elements.value = [
         {
             id: '1',
-            type: 'custom',
+            type: 'stage',
             data: {},
             position: { x: 0, y: 50 }
         },
@@ -100,7 +100,6 @@ onMounted(() => {
             id: '2',
             type: 'stage',
             data: {},
-
             position: { x: 350, y: 25 }
             // targetPosition: Position.Left
         },
@@ -118,9 +117,7 @@ onMounted(() => {
             sourceHandle: 'a',
             target: '2',
             animated: true,
-            style: () => ({
-                color: 'red'
-            }),
+            style: () => ({}),
             data: {
                 label: 'No'
             }
