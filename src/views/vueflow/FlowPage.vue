@@ -47,8 +47,8 @@ onConnect((params) => {
 });
 
 const nodesChange = (val) => {
-    console.log(val);
-
+    val;
+    // console.log(val);
     // console.log('nodesChange', elements.value);
 };
 
