@@ -19,6 +19,10 @@
         <template #node-custom="{ data }">
             <CustomNode :data="data" />
         </template>
+
+        <template #node-stage="{ data }">
+            <StageNode :data="data" />
+        </template>
     </VueFlow>
 </template>
 
@@ -27,6 +31,7 @@ import { VueFlow, useVueFlow, Position } from '@vue-flow/core';
 import { ref, onMounted } from 'vue';
 import HeaderView from './components/HeaderView.vue';
 import CustomNode from './nodes/CustomNode.vue';
+import StageNode from './nodes/StageNode.vue';
 
 const { onConnect, addEdges, nodes, addNodes } = useVueFlow();
 
@@ -75,9 +80,11 @@ onMounted(() => {
         },
         {
             id: '2',
-            type: 'output',
-            position: { x: 350, y: 25 },
-            targetPosition: Position.Left
+            type: 'stage',
+            data: {},
+
+            position: { x: 350, y: 25 }
+            // targetPosition: Position.Left
         },
         {
             id: '3',
