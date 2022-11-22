@@ -21,7 +21,7 @@
         </template>
 
         <template #node-stage="{ data }">
-            <StageNode :data="data" />
+            <StageNode :data="data" @remove="remove" />
         </template>
 
         <template #node-conversion="{ data }">
@@ -46,6 +46,7 @@ import CustomEdge from './edges/CustomEdge.vue';
 const { onConnect, addEdges, nodes, addNodes } = useVueFlow();
 
 const elements = ref([]);
+const selectedNode = ref(null);
 
 const save = () => {
     console.log('save');
@@ -53,6 +54,20 @@ const save = () => {
 
 const nodeClick = (val) => {
     console.log('nodeClick', val.node.id);
+    selectedNode.value = val.node.id;
+};
+
+const remove = () => {
+    console.log('remove', selectedNode.value);
+    // elements.value = elements.value.filter((el) => {
+    //     return el.id !== selectedNode.value;
+    // });
+
+    elements.value.forEach((el) => {
+        if (el.id === selectedNode.value) {
+            el.hidden = true;
+        }
+    });
 };
 
 onConnect((params) => {
@@ -71,7 +86,7 @@ const addStageNode = () => {
     const id = nodes.value.length + 1;
 
     const newNode = {
-        type: 'custom',
+        type: 'stage',
         id: id,
         position: { x: 0, y: 0 },
         targetPosition: Position.Left
@@ -84,7 +99,7 @@ const addConversionNode = () => {
     const id = nodes.value.length + 1;
 
     const newNode = {
-        type: 'custom',
+        type: 'conversion',
         id: id,
         position: { x: 0, y: 0 },
         targetPosition: Position.Left
