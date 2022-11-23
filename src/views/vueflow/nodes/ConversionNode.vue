@@ -34,7 +34,11 @@
     <span></span>
 
     <div class="action-buttons">
-        <div id="delete-button" class="delete-button"></div>
+        <div
+            id="delete-button"
+            class="delete-button"
+            @click="emit('remove')"
+        ></div>
 
         <div id="edit-button" class="tool-button mx-1"></div>
 
@@ -67,7 +71,7 @@ const props = defineProps({
     }
 });
 
-// const emit = defineEmits(['change', 'gradient']);
+const emit = defineEmits(['remove']);
 
 const showOptionsDialog = ref(false);
 
