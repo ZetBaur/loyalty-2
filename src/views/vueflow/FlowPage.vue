@@ -52,21 +52,20 @@ const save = () => {
     console.log('save');
 };
 
-const nodeClick = (val) => {
-    // console.log('nodeClick', val.node.id);
-    // console.log('nodeClick', val);
-
-    selectedNode.value = val.node.id;
-};
+const nodeClick = (val) => (selectedNode.value = val);
 
 const remove = () => {
-    console.log('remove', selectedNode.value);
+    console.log(selectedNode.value.node.id);
+
     applyNodeChanges([
         {
-            id: selectedNode.value,
-            type: 'remove'
+            id: selectedNode.value.node.id,
+            type: 'remove',
+            removeConnectedEdges: true
         }
     ]);
+
+    console.log(elements.value);
 };
 
 onConnect((params) => {
