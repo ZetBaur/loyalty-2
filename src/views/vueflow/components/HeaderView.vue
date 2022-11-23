@@ -30,16 +30,12 @@
     <!-- ----------------------------- -->
 
     <div class="flex it mt-4">
-        <BaseButton
-            @click="emit('addConversionNode')"
-            text="Конверсия"
-            class="mr-4"
-        >
-            <ConversionIcon />
+        <BaseButton @click="emit('addStageNode')" text="Этапы" class="mr-4">
+            <StageIcon />
         </BaseButton>
 
-        <BaseButton @click="emit('addStageNode')" text="Этапы">
-            <StageIcon />
+        <BaseButton @click="emit('addConversionNode')" text="Конверсия">
+            <ConversionIcon />
         </BaseButton>
     </div>
 </template>
