@@ -45,7 +45,7 @@
         <div
             id="add-button"
             class="add-button"
-            @click.stop="showOptionsDialog.value = true"
+            @click.stop="showOptionsDialog = true"
         ></div>
     </div>
 
