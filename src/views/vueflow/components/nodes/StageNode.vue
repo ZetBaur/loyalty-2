@@ -73,8 +73,6 @@ onClickOutside(optionsDialog, () => (showOptionsDialog.value = false));
 
 const props = defineProps(['data']);
 
-console.log(props);
-
 const emit = defineEmits(['remove', 'addStage', 'addConversion']);
 
 const showOptionsDialog = ref(false);

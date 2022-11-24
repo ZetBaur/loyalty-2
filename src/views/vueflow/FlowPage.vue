@@ -53,7 +53,10 @@ const elements = ref([]);
 
 const selectedNode = ref(null);
 
-const nodeClick = (val) => (selectedNode.value = val);
+const nodeClick = (val) => {
+    selectedNode.value = val;
+    console.log(selectedNode.value);
+};
 
 const save = () => {
     console.log('save', elements.value);

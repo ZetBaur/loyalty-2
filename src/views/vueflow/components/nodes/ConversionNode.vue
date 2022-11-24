@@ -50,8 +50,8 @@
     </div>
 
     <div v-if="showOptionsDialog" ref="optionsDialog" class="options">
-        <div>Этап</div>
-        <div>Конверсия</div>
+        <div @click.stop="emit('addStage')">Этап</div>
+        <div @click.stop="emit('addConversion')">Конверсия</div>
     </div>
 
     <div class="conversion-description">Конверсия</div>
@@ -70,9 +70,7 @@ onClickOutside(optionsDialog, () => (showOptionsDialog.value = false));
 
 const props = defineProps(['data']);
 
-console.log(props);
-
-const emit = defineEmits(['remove']);
+const emit = defineEmits(['remove', 'addStage', 'addConversion']);
 
 const showOptionsDialog = ref(false);
 
