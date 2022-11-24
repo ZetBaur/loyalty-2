@@ -3,6 +3,7 @@
         class="base-button"
         @click="emit('action', $event)"
         :class="props.color"
+        type="button"
         :disabled="props.disabled"
     >
         {{ props.text }}
@@ -54,5 +55,17 @@ const emit = defineEmits<{
     &:hover {
         background-color: #1fe1a4;
     }
+}
+
+button:disabled,
+button[disabled] {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+button[disabled]:hover {
+    background-color: #cccccc;
+    color: #666666;
 }
 </style>

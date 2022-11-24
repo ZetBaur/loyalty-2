@@ -32,8 +32,8 @@
 
 <script setup lang="ts">
 import OpenMenuIcon from '../icons/OpenMenuIcon.vue';
-import MultiMenuItems from './MultiMenuItems.vue';
-import SingleMenuItem from './SingleMenuItem.vue';
+import MultiMenuItems from './components/MultiMenuItems.vue';
+import SingleMenuItem from './components/SingleMenuItem.vue';
 
 //-------------
 

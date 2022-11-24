@@ -16,10 +16,6 @@
         fit-view-on-init
         @nodeClick="nodeClick"
     >
-        <template #node-custom="{ data }">
-            <CustomNode :data="data" />
-        </template>
-
         <template #node-stage="{ data }">
             <StageNode :data="data" @remove="remove" />
         </template>
@@ -38,10 +34,9 @@
 import { VueFlow, useVueFlow } from '@vue-flow/core';
 import { ref, onMounted } from 'vue';
 import HeaderView from './components/HeaderView.vue';
-import CustomNode from './nodes/CustomNode.vue';
-import StageNode from './nodes/StageNode.vue';
-import ConversionNode from './nodes/ConversionNode.vue';
-import CustomEdge from './edges/CustomEdge.vue';
+import StageNode from './components/nodes/StageNode.vue';
+import ConversionNode from './components/nodes/ConversionNode.vue';
+import CustomEdge from './components/edges/CustomEdge.vue';
 
 const { onConnect, addEdges, nodes, addNodes, applyNodeChanges } = useVueFlow();
 
@@ -54,15 +49,9 @@ const save = () => {
     console.log('save', elements.value);
 };
 
-onConnect((params) => {
-    console.log('onConnect', params);
-
-    addEdges([params]);
-});
+onConnect((params) => addEdges([params]));
 
 const remove = () => {
-    console.log(selectedNode.value.node.id);
-
     applyNodeChanges([
         {
             id: selectedNode.value.node.id,

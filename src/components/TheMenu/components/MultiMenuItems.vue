@@ -38,7 +38,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
-import ArrowIcon from '../icons/ArrowIcon.vue';
+import ArrowIcon from '../../icons/ArrowIcon.vue';
 import { useRouter } from 'vue-router';
 
 interface Ilinks {

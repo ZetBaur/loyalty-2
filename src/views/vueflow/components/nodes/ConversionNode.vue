@@ -200,15 +200,4 @@ const rightMiddleHandleStyle = computed(() => ({
     font-size: 18px;
     font-weight: 500;
 }
-
-// .vue-flow__handle-left {
-//     left: -11px !important;
-//     top: 50% !important;
-//     transform: translateY(-50%) !important;
-// }
-
-// .vue-flow__handle-right {
-//     right: -11px !important;
-//     // top: 18px !important;
-// }
 </style>
