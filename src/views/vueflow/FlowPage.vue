@@ -41,6 +41,7 @@ import CustomEdge from './components/edges/CustomEdge.vue';
 const { onConnect, addEdges, nodes, addNodes, applyNodeChanges } = useVueFlow();
 
 const elements = ref([]);
+
 const selectedNode = ref(null);
 
 const nodeClick = (val) => (selectedNode.value = val);

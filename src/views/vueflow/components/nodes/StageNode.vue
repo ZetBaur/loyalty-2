@@ -42,7 +42,11 @@
 
         <div id="edit-button" class="tool-button mx-1"></div>
 
-        <div id="add-button" class="add-button" @click.stop="addHandler"></div>
+        <div
+            id="add-button"
+            class="add-button"
+            @click.stop="showOptionsDialog.value = true"
+        ></div>
     </div>
 
     <div v-if="showOptionsDialog" ref="optionsDialog" class="options">
@@ -67,20 +71,14 @@ const optionsDialog = ref(null);
 
 onClickOutside(optionsDialog, () => (showOptionsDialog.value = false));
 
-const props = defineProps({
-    data: {
-        type: Object,
-        required: true
-    }
-});
+const props = defineProps(['data']);
+
+console.log(props);
 
 const emit = defineEmits(['remove']);
 
 const showOptionsDialog = ref(false);
 
-const addHandler = () => {
-    showOptionsDialog.value = true;
-};
 const leftHandleStyle = computed(() => ({
     top: '50%',
     left: '-10px',
