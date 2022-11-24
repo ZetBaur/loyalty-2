@@ -17,11 +17,20 @@
         @nodeClick="nodeClick"
     >
         <template #node-stage="{ data }">
-            <StageNode :data="data" @remove="remove" />
+            <StageNode
+                :data="data"
+                @remove="remove"
+                @add-stage="addStageNode"
+                @add-conversion="addConversionNode"
+            />
         </template>
 
         <template #node-conversion="{ data }">
-            <ConversionNode :data="data" @remove="remove" />
+            <ConversionNode
+                :data="data"
+                @remove="remove"
+                @add-conversion="addConversionNode"
+            />
         </template>
 
         <template #edge-customEdge="props">
