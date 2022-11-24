@@ -3,6 +3,7 @@
         @save="save"
         @add-conversion-node="addConversionNode"
         @add-stage-node="addStageNode"
+        :elements="elements"
     />
 
     <VueFlow
@@ -34,7 +35,7 @@
 </template>
 
 <script setup>
-import { VueFlow, useVueFlow, Position } from '@vue-flow/core';
+import { VueFlow, useVueFlow } from '@vue-flow/core';
 import { ref, onMounted } from 'vue';
 import HeaderView from './components/HeaderView.vue';
 import CustomNode from './nodes/CustomNode.vue';
@@ -50,7 +51,7 @@ const selectedNode = ref(null);
 const nodeClick = (val) => (selectedNode.value = val);
 
 const save = () => {
-    console.log('save');
+    console.log('save', elements.value);
 };
 
 onConnect((params) => {

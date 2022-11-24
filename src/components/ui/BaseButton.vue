@@ -3,6 +3,7 @@
         class="base-button"
         @click="emit('action', $event)"
         :class="props.color"
+        :disabled="props.disabled"
     >
         {{ props.text }}
 
@@ -17,6 +18,7 @@ const props = defineProps<{
     text: string;
     icon?: string;
     color?: string;
+    disabled?: boolean;
 }>();
 
 const emit = defineEmits<{

@@ -35,16 +35,6 @@ const router = createRouter({
         },
 
         {
-            path: '/dfpage',
-            name: 'dfpage',
-            component: () => import('@/views/drawflow/DFpage.vue'),
-            meta: {
-                layout: 'main',
-                auth: false
-            }
-        },
-
-        {
             path: '/test',
             name: 'test',
             component: () => import('@/views/TestPage.vue'),

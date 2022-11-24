@@ -30,28 +30,46 @@
     <!-- ----------------------------- -->
 
     <div class="flex it mt-4">
-        <BaseButton @click="emit('addStageNode')" text="Этапы" class="mr-4">
+        <BaseButton
+            @click="emit('addStageNode')"
+            text="Этапы"
+            :disabled="!props.elements.length"
+            class="mr-4"
+        >
             <StageIcon />
         </BaseButton>
 
-        <BaseButton @click="emit('addConversionNode')" text="Конверсия">
+        <BaseButton
+            @click="emit('addConversionNode')"
+            text="Конверсия"
+            :disabled="props.elements.length === 0"
+        >
             <ConversionIcon />
         </BaseButton>
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import EditIcon from '@/components/icons/EditIcon.vue';
 import BaseButton from '@/components/ui/BaseButton.vue';
 import { useRouter } from 'vue-router';
 import ConversionIcon from '@/components/icons/ConversionIcon.vue';
 import StageIcon from '@/components/icons/StageIcon.vue';
+import { onMounted } from 'vue';
 
-const emit = defineEmits<{
-    (e: 'save'): void;
-    (e: 'addConversionNode'): void;
-    (e: 'addStageNode'): void;
-}>();
+const props = defineProps(['elements']);
+
+const emit = defineEmits(['save', 'addConversionNode', 'addStageNode']);
+
+// const emit = defineEmits<{
+//     (e: 'save'): void;
+//     (e: 'addConversionNode'): void;
+//     (e: 'addStageNode'): void;
+// }>();
 
 const router = useRouter();
+
+onMounted(() => {
+    console.log(props.elements.length);
+});
 </script>
