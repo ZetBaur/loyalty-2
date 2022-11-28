@@ -29,6 +29,7 @@
             <ConversionNode
                 :data="data"
                 @remove="remove"
+                @add-stage="addStageNode"
                 @add-conversion="addConversionNode"
             />
         </template>
@@ -46,6 +47,7 @@ import HeaderView from './components/HeaderView.vue';
 import StageNode from './components/nodes/StageNode.vue';
 import ConversionNode from './components/nodes/ConversionNode.vue';
 import CustomEdge from './components/edges/CustomEdge.vue';
+import { v4 as uuidv4 } from 'uuid';
 
 const { onConnect, addEdges, nodes, addNodes, applyNodeChanges } = useVueFlow();
 
@@ -75,13 +77,11 @@ const remove = () => {
 };
 
 const addStageNode = () => {
-    const id = nodes.value.length + 1;
-
     const newPositionX = nodes.value.length * 150 + 100;
 
     const newNode = {
         type: 'stage',
-        id: id,
+        id: uuidv4(),
         position: { x: newPositionX, y: 100 }
     };
 
@@ -89,12 +89,11 @@ const addStageNode = () => {
 };
 
 const addConversionNode = () => {
-    const id = nodes.value.length + 1;
     const newPositionX = nodes.value.length * 150 + 100;
 
     const newNode = {
         type: 'conversion',
-        id: id,
+        id: uuidv4(),
         position: { x: newPositionX, y: 100 }
     };
 
