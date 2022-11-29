@@ -26,6 +26,14 @@
             ]"
         />
 
+        <SingleMenuItem
+            link="Акции"
+            path="/actions"
+            icon="Microphone"
+            :menuIsExpanded="props.menuIsExpanded"
+            @close-menu="emit('closeMenu')"
+        />
+
         <OpenMenuIcon class="open-menu-icon" @click="emit('expandMenu')" />
     </ul>
 </template>

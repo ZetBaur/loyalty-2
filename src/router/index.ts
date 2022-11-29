@@ -25,6 +25,16 @@ const router = createRouter({
         },
 
         {
+            path: '/actions',
+            name: 'actions',
+            component: () => import('@/views/actions/ActionsPage.vue'),
+            meta: {
+                layout: 'main',
+                auth: false
+            }
+        },
+
+        {
             path: '/flowpage',
             name: 'flowpage',
             component: () => import('@/views/vueflow/FlowPage.vue'),
