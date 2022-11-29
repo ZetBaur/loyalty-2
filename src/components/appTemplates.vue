@@ -12,4 +12,6 @@
         sort
         create
     />
+
+    <hr class="h-[5px] bg-[#ebebeb] rounded-[5px] mb-[40px]" />
 </template>
