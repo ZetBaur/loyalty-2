@@ -13,7 +13,7 @@
             placeholder="Please input"
             @input="searchHadler"
             clearable
-            class="max-w-[484px] ml-auto mr-[53px]"
+            class="toolbar-input max-w-[484px] ml-auto mr-[53px]"
         >
             <template #prepend>
                 <el-icon size="25"><Search /></el-icon>
@@ -55,11 +55,9 @@ const searchHadler = () => emit('searchEvent', search.value);
 </script>
 
 <style lang="scss">
-// .el-input-group__prepend {
-//     border-radius: 15px 0 0 15px;
-// }
-
-// .el-input__wrapper {
-//     border-radius: 0 15px 15px 0;
-// }
+.toolbar-input {
+    .el-input__wrapper {
+        border-radius: 0 15px 15px 0;
+    }
+}
 </style>

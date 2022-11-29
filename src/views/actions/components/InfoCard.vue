@@ -12,6 +12,24 @@
 
         <hr class="h-[5px] bg-[#ebebeb] rounded-[5px] mb-[40px]" />
 
+        <div class="flex mb-8">
+            <div class="mr-10">
+                <div class="mb-3">Создано: 23-07-2022</div>
+                <div>Дата старта: 23-07-2022</div>
+            </div>
+
+            <div class="mr-10">
+                <div class="mb-3">Изменено: 23-07-2022</div>
+                <div>Дата окончания: 23-07-2022</div>
+            </div>
+
+            <div>
+                <div>Количество клиентов: 100 000</div>
+            </div>
+        </div>
+
+        <hr class="h-[5px] bg-[#ebebeb] rounded-[5px] mb-[40px]" />
+
         <div class="flex items-center justify-between mb-[30px]">
             <h2 class="text-lg font-medium">Сегменты</h2>
 
@@ -45,6 +63,22 @@
         </div>
 
         <hr class="h-[5px] bg-[#ebebeb] rounded-[5px] mb-[40px]" />
+
+        <h2>Триггеры</h2>
+
+        <el-select
+            v-model="value"
+            class="m-2 rounded-md"
+            placeholder="Select"
+            size="large"
+        >
+            <el-option
+                v-for="item in options"
+                :key="item"
+                :label="item"
+                :value="item"
+            />
+        </el-select>
 
         <div class="flex items-center justify-between mb-[30px]">
             <h2>Сценарий</h2>
@@ -90,10 +124,16 @@ import EditIcon from '@/components/icons/EditIcon.vue';
 import CrossIcon from '@/components/icons/CrossIcon.vue';
 import OrangePlusIcon from '@/components/icons/OrangePlusIcon.vue';
 import DeleteIcon from '@/components/icons/DeleteIcon.vue';
+// import { ElSelect, ElOption, ElButton } from 'element-plus';
+import { ref } from 'vue';
 
 const emit = defineEmits<{
     (e: 'createNewScript'): void;
 }>();
+
+const options = ref(['test', 'test1']);
+
+const value = ref('');
 </script>
 
 <script setup lang="ts"></script>
