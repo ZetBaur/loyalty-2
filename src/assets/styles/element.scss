@@ -19,3 +19,17 @@
     border-radius: 15px;
     height: 50px;
 }
+
+.el-tag {
+    background: #f4f4f4;
+    border-radius: 15px;
+    color: #2d2f32;
+    height: 42px;
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+    border: none;
+
+    & .el-tag__close {
+        color: #2d2f32;
+    }
+}
