@@ -56,17 +56,18 @@
         <el-icon class="mt-1 cursor-pointer"><Minus /></el-icon>
     </div>
 
-    <div class="flex items-center mb-5">
-        <span class="mr-3"> ID:</span>
-        <el-select v-model="value" placeholder="Select">
-            <el-option
-                v-for="item in options"
-                :key="item"
-                :label="item"
-                :value="item"
-            />
-        </el-select>
-    </div>
+    <el-form>
+        <el-form-item label="ID">
+            <el-select v-model="value" placeholder="Select">
+                <el-option
+                    v-for="item in options"
+                    :key="item"
+                    :label="item"
+                    :value="item"
+                />
+            </el-select>
+        </el-form-item>
+    </el-form>
 
     <hr class="mb-3" />
 
@@ -78,9 +79,8 @@
         <el-icon class="mt-1 cursor-pointer"><Minus /></el-icon>
     </div>
 
-    <div class="flex items-center mb-5">
-        <div class="mr-5">
-            <span class="mr-3"> Минимальная сумма чека:</span>
+    <el-form :inline="true">
+        <el-form-item label="Минимальная сумма чека" class="flex items-center">
             <el-select v-model="value" placeholder="Select">
                 <el-option
                     v-for="item in options"
@@ -89,10 +89,9 @@
                     :value="item"
                 />
             </el-select>
-        </div>
+        </el-form-item>
 
-        <div>
-            <span class="mr-3"> ID:</span>
+        <el-form-item label="ID" class="flex items-center">
             <el-select v-model="value" placeholder="Select">
                 <el-option
                     v-for="item in options"
@@ -101,10 +100,17 @@
                     :value="item"
                 />
             </el-select>
-        </div>
-    </div>
+        </el-form-item>
+    </el-form>
 
-    <el-checkbox v-model="checked2" label="Option 2" />
+    <el-form>
+        <el-form-item
+            label="вычесть сумму товаров исключения?"
+            class="flex items-center"
+        >
+            <el-checkbox v-model="checked2" />
+        </el-form-item>
+    </el-form>
 
     <hr class="mb-3" />
 </template>
