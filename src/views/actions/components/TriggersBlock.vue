@@ -20,30 +20,31 @@
         <el-icon class="mt-1 cursor-pointer"><Minus /></el-icon>
     </div>
 
-    <div class="flex items-center mb-5">
-        <span class="mr-3"> ID:</span>
-        <el-select v-model="value" placeholder="Select">
-            <el-option
-                v-for="item in options"
-                :key="item"
-                :label="item"
-                :value="item"
-            />
-        </el-select>
-    </div>
+    <el-form>
+        <el-form-item label="ID">
+            <el-select v-model="value" placeholder="Select">
+                <el-option
+                    v-for="item in options"
+                    :key="item"
+                    :label="item"
+                    :value="item"
+                />
+            </el-select>
+        </el-form-item>
 
-    <div class="mb-5 mx-7">
-        <el-tag
-            v-for="tag in dynamicTags"
-            :key="tag"
-            class="mx-1"
-            closable
-            :disable-transitions="false"
-            @close="handleClose(tag)"
-        >
-            {{ tag }}
-        </el-tag>
-    </div>
+        <el-form-item class="ml-4">
+            <el-tag
+                v-for="tag in dynamicTags"
+                :key="tag"
+                class="mx-1"
+                closable
+                :disable-transitions="false"
+                @close="handleClose(tag)"
+            >
+                {{ tag }}
+            </el-tag>
+        </el-form-item>
+    </el-form>
 
     <hr class="mb-3" />
 
