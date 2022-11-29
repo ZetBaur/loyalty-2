@@ -67,6 +67,8 @@ const save = () => {
 onConnect((params) => addEdges([params]));
 
 const remove = () => {
+    console.log('remove');
+
     applyNodeChanges([
         {
             id: selectedNode.value.node.id,

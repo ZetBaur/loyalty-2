@@ -1,5 +1,5 @@
 <template>
-    <BaseToolbar
+    <ToolBar
         @filter-event="filterHandler"
         @sort-event="sortHandler"
         @create-event="createHandler"
@@ -9,16 +9,19 @@
         create
     />
 
-    <el-pagination background layout="prev, pager, next" :total="1000" />
-
-    <br />
+    <el-pagination
+        background
+        layout="prev, pager, next"
+        :total="1000"
+        class="mb-4"
+    />
 
     <div class="flex">
         <div class="flex-1 mr-[12px]">
-            <BaseTableCard @delete="deleteHandler" />
+            <TableCard @delete="deleteHandler" />
         </div>
 
-        <BaseInfoCard
+        <InfoCard
             class="ml-[14px]"
             @create-new-script="router.push('/flowpage')"
         />
@@ -26,18 +29,12 @@
 </template>
 
 <script setup lang="ts">
-import BaseToolbar from '@/components/BaseToolbar.vue';
-import BaseTableCard from '@/components/BaseTableCard.vue';
-import BaseInfoCard from '@/components/BaseInfoCard.vue';
+import ToolBar from '@/components/ToolBar.vue';
+import TableCard from './components/TableCard.vue';
+import InfoCard from './components/InfoCard.vue';
 import { useRouter } from 'vue-router';
 
-// vars
-
 const router = useRouter();
-
-//  info card
-
-// toolbar
 
 const filterHandler = () => console.log('filter');
 
@@ -46,8 +43,6 @@ const sortHandler = () => console.log('sortHandler');
 const createHandler = () => console.log('createHandler');
 
 const searchHandler = (e: string | number) => console.log('searchHandler', e);
-
-//  table card
 
 const deleteHandler = () => {
     console.log('deleteHandler');

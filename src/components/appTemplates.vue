@@ -1,11 +1,5 @@
 <template>
     <div class="flex items-center">
-        <BaseButton
-            class="mx-2"
-            text="Сохранить"
-            color="green"
-            @action="emit('')"
-        />
-        <BaseButton class="mx-2" text="Отменить" @action="emit('')" />
+        <el-button class="bg-[#00C389] text-[#ffffff]">Сохранить</el-button>
     </div>
 </template>
