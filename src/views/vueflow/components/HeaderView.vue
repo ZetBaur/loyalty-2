@@ -14,20 +14,13 @@
         </div>
 
         <div class="flex items-center">
-            <BaseButton
-                class="mx-2"
-                text="Сохранить"
-                color="green"
-                @action="emit('save')"
-                :disabled="!props.elements.length"
-            />
+            <el-button @click="emit('save')" class="bg-[#00C389] text-[#ffffff]"
+                >Сохранить</el-button
+            >
 
-            <BaseButton
-                @action="router.go(-1)"
-                class="mx-2"
-                text="Отменить"
-                :disabled="!props.elements.length"
-            />
+            <el-button @click="router.go(-1)" :disabled="!props.elements.length"
+                >Отменить</el-button
+            >
         </div>
     </div>
 
@@ -36,19 +29,20 @@
     <!-- ----------------------------- -->
 
     <div class="flex it mt-4">
-        <BaseButton @click="emit('addStageNode')" text="Этапы" class="mr-4">
-            <StageIcon />
-        </BaseButton>
+        <el-button @click="emit('addStageNode')" class="mr-4">
+            <StageIcon class="w-5 mr-2" />
+            Этапы
+        </el-button>
 
-        <BaseButton @click="emit('addConversionNode')" text="Конверсия">
-            <ConversionIcon />
-        </BaseButton>
+        <el-button @click="emit('addConversionNode')">
+            <ConversionIcon class="w-5 mr-2" />
+            Конверсия
+        </el-button>
     </div>
 </template>
 
 <script setup>
 import EditIcon from '@/components/icons/EditIcon.vue';
-import BaseButton from '@/components/ui/BaseButton.vue';
 import { useRouter } from 'vue-router';
 import ConversionIcon from '@/components/icons/ConversionIcon.vue';
 import StageIcon from '@/components/icons/StageIcon.vue';
