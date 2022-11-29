@@ -10,3 +10,11 @@
     border-radius: 15px;
     font-size: 18px;
 }
+
+.el-input-group__prepend {
+    border-radius: 15px 0 0 15px;
+}
+
+.el-input__wrapper {
+    border-radius: 0 15px 15px 0;
+}

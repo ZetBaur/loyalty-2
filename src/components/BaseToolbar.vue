@@ -1,22 +1,12 @@
 <template>
     <div class="flex">
-        <BaseButton
-            v-if="props.filter"
-            @action="emit('filterEvent')"
-            text="Фильтр"
-            :icon="'Filter'"
-            style="margin-right: 39px"
-        />
+        <el-button v-if="props.filter" @click="emit('filterEvent')"
+            >Фильтр<el-icon class="ml-3"><Filter /></el-icon
+        ></el-button>
 
-        <el-button>Фильтр</el-button>
-
-        <BaseButton
-            v-if="props.sort"
-            @action="emit('sortEvent')"
-            text="Сортировка"
-            :icon="'Operation'"
-            style="margin-right: 39px"
-        />
+        <el-button v-if="props.sort" @click="emit('sortEvent')"
+            >Сортировка<el-icon class="ml-3"><Operation /></el-icon
+        ></el-button>
 
         <el-input
             v-model="search"
@@ -30,13 +20,12 @@
             </template>
         </el-input>
 
-        <BaseButton
+        <el-button
             v-if="props.create"
-            @action="emit('createEvent')"
-            text="Создать"
-            :icon="'Plus'"
-            color="green"
-        />
+            @click="emit('createEvent')"
+            class="bg-[#00C389] text-[#ffffff]"
+            >Создать<el-icon class="ml-3"><Plus /></el-icon
+        ></el-button>
     </div>
 
     <el-divider class="bg-[#f4f4f4] h-[8px] border-0 rounded-[10px]" />
@@ -45,7 +34,6 @@
 <script setup lang="ts">
 import { Search } from '@element-plus/icons-vue';
 import { ref } from 'vue';
-import BaseButton from './ui/BaseButton.vue';
 
 const props = defineProps<{
     filter?: boolean;
