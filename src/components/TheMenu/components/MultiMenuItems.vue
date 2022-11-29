@@ -3,7 +3,7 @@
         <div class="item-title" @click="toggle">
             <component :is="props.icon" class="icon" v-if="menuIsExpanded" />
 
-            <el-tooltip v-else placement="right" effect="light">
+            <el-tooltip v-else placement="right" effect="dark">
                 <template #content>
                     <div class="popover">
                         <RouterLink
@@ -126,7 +126,7 @@ const toggle = () => (droppedDown.value = !droppedDown.value);
 
     & a {
         font-size: 18px;
-        color: black;
+        color: #ffffff;
         padding: 8px;
 
         &:hover {

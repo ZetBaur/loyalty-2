@@ -78,9 +78,9 @@
         <hr class="h-[5px] bg-[#ebebeb] rounded-[5px] mb-[40px]" />
 
         <div class="flex justify-center mb-[46px]">
-            <BaseButton class="mx-[14px]" text="Сохранить" color="green" />
+            <el-button class="bg-[#00C389] text-[#ffffff]">Сохранить</el-button>
 
-            <BaseButton text="Отменить" />
+            <el-button>Отменить</el-button>
         </div>
     </div>
 </template>
@@ -90,7 +90,6 @@ import EditIcon from '@/components/icons/EditIcon.vue';
 import CrossIcon from '@/components/icons/CrossIcon.vue';
 import OrangePlusIcon from '@/components/icons/OrangePlusIcon.vue';
 import DeleteIcon from '@/components/icons/DeleteIcon.vue';
-import BaseButton from '@/components/ui/BaseButton.vue';
 
 const emit = defineEmits<{
     (e: 'createNewScript'): void;
