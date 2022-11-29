@@ -8,6 +8,8 @@
             style="margin-right: 39px"
         />
 
+        <el-button>Фильтр</el-button>
+
         <BaseButton
             v-if="props.sort"
             @action="emit('sortEvent')"
