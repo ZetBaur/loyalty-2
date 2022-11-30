@@ -56,7 +56,7 @@ import DeleteIcon from '@/components/icons/DeleteIcon.vue';
 import BlockTitle from './BlockTitle.vue';
 import GeneralInfo from './GeneralInfo.vue';
 import SegmentsSection from './SegmentsSection.vue';
-import TriggersSection from './TriggersSection.vue';
+import TriggersSection from './triggers/TriggersSection.vue';
 
 const emit = defineEmits<{
     (e: 'createNewScript'): void;
