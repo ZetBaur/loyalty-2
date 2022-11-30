@@ -37,6 +37,8 @@
             </el-tag>
         </el-form-item>
     </el-form>
+
+    <el-divider class="border-0 bg-[#ebebeb] rounded-lg mb-10" />
 </template>
 
 <script setup lang="ts">

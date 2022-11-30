@@ -12,12 +12,20 @@
 
     <el-divider class="border-0 bg-[#ebebeb] rounded-lg mb-10" />
 
-    <ActorSection />
+    <TagsSection />
+
+    <TagsSection />
+
+    <CheckAmountConditions />
+
+    <TagsSection />
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import ActorSection from './ActorSection.vue';
+import TagsSection from './TagsSection.vue';
+import CheckAmountConditions from './CheckAmountConditions.vue';
+
 const options = ref(['trest', 'test2']);
 </script>
 
