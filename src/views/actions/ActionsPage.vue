@@ -30,7 +30,7 @@
 
 <script setup lang="ts">
 import ToolBar from '@/components/ToolBar.vue';
-import TableCard from '@/components/TableCard.vue';
+// import TableCard from '@/components/TableCard.vue';
 import InfoCard from './components/InfoCard.vue';
 
 import { useRouter } from 'vue-router';
@@ -47,5 +47,3 @@ const searchHandler = (e: string | number) => console.log('searchHandler', e);
 
 const deleteHandler = () => console.log('deleteHandler');
 </script>
-
-<style lang="scss"></style>

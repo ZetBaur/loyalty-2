@@ -1,12 +1,12 @@
 <template>
     <div class="p-4 border-solid border border-slate-300 rounded-[15px] flex-1">
-        <MainTitle />
+        <BlockTitle />
 
-        <MainInfo />
+        <GeneralInfo />
 
-        <SegmentsBlock />
+        <SegmentsSection />
 
-        <TriggersBlock />
+        <TriggersSection />
 
         <div class="flex items-center justify-between mb-[30px]">
             <h2>Сценарий</h2>
@@ -54,10 +54,10 @@ import OrangePlusIcon from '@/components/icons/OrangePlusIcon.vue';
 import DeleteIcon from '@/components/icons/DeleteIcon.vue';
 // import { ElSelect, ElOption, ElButton } from 'element-plus';
 // import { ref } from 'vue';
-import MainTitle from './MainTitle.vue';
-import MainInfo from './MainInfo.vue';
-import SegmentsBlock from './SegmentsBlock.vue';
-import TriggersBlock from './TriggersBlock.vue';
+import BlockTitle from './BlockTitle.vue';
+import GeneralInfo from './GeneralInfo.vue';
+import SegmentsSection from './SegmentsSection.vue';
+import TriggersSection from './TriggersSection.vue';
 
 const emit = defineEmits<{
     (e: 'createNewScript'): void;
