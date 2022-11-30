@@ -37,4 +37,5 @@
 <script setup lang="ts">
 import EditIcon from '@/components/icons/EditIcon.vue';
 import DeleteIcon from '@/components/icons/DeleteIcon.vue';
+import OrangePlusIcon from '@/components/icons/OrangePlusIcon.vue';
 </script>

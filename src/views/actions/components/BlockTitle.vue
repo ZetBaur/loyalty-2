@@ -14,4 +14,5 @@
 
 <script setup lang="ts">
 import CrossIcon from '@/components/icons/CrossIcon.vue';
+import EditIcon from '@/components/icons/EditIcon.vue';
 </script>
