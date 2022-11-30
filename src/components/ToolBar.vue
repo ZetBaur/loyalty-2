@@ -28,7 +28,7 @@
         ></el-button>
     </div>
 
-    <el-divider class="bg-[#f4f4f4] h-[8px] border-0 rounded-[10px]" />
+    <el-divider class="bg-[#f4f4f4] h-2 border-0 rounded-lg my-6" />
 </template>
 
 <script setup lang="ts">

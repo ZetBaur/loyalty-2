@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <hr class="h-[5px] bg-[#ebebeb] rounded-[5px] mb-[40px]" />
+    <hr class="h-1 border-0 bg-[#ebebeb] rounded-lg mb-10" />
 </template>
 
 <script setup lang="ts"></script>

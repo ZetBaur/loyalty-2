@@ -1,5 +1,5 @@
 <template>
-    <div class="p-4 border-solid border border-slate-300 rounded-[15px] flex-1">
+    <div class="p-4 border-solid border border-slate-300 rounded-xl flex-1">
         <BlockTitle />
 
         <GeneralInfo />
@@ -52,7 +52,6 @@ import EditIcon from '@/components/icons/EditIcon.vue';
 // import CrossIcon from '@/components/icons/CrossIcon.vue';
 import OrangePlusIcon from '@/components/icons/OrangePlusIcon.vue';
 import DeleteIcon from '@/components/icons/DeleteIcon.vue';
-// import { ElSelect, ElOption, ElButton } from 'element-plus';
 // import { ref } from 'vue';
 import BlockTitle from './BlockTitle.vue';
 import GeneralInfo from './GeneralInfo.vue';

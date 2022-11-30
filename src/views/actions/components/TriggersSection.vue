@@ -1,7 +1,7 @@
 <template>
     <h2 class="mb-3 font-bold text-[24px]">Триггеры</h2>
 
-    <el-select v-model="value" placeholder="Select" class="mb-5">
+    <el-select v-model="value" placeholder="Select">
         <el-option
             v-for="item in options"
             :key="item"
@@ -10,7 +10,7 @@
         />
     </el-select>
 
-    <hr class="mb-3" />
+    <el-divider class="border-0 bg-[#ebebeb] my-5" />
 
     <div class="flex items-center justify-between mb-5 max-w-[900px]">
         <div class="flex">
@@ -46,7 +46,7 @@
         </el-form-item>
     </el-form>
 
-    <hr class="mb-3" />
+    <el-divider class="border-0 bg-[#ebebeb] my-5" />
 
     <div class="flex items-center justify-between mb-5 max-w-[900px]">
         <div class="flex">
@@ -69,7 +69,7 @@
         </el-form-item>
     </el-form>
 
-    <hr class="mb-3" />
+    <el-divider class="border-0 bg-[#ebebeb] my-5" />
 
     <div class="flex items-center justify-between mb-5 max-w-[900px]">
         <div class="flex">
@@ -112,7 +112,53 @@
         </el-form-item>
     </el-form>
 
-    <hr class="mb-3" />
+    <el-divider class="border-0 bg-[#ebebeb] my-5" />
+
+    <div class="flex items-center justify-between mb-5 max-w-[900px]">
+        <div class="flex">
+            <h3 class="mr-5 font-bold">Город</h3>
+            <el-icon class="mt-1 cursor-pointer"><Plus /></el-icon>
+        </div>
+        <el-icon class="mt-1 cursor-pointer"><Minus /></el-icon>
+    </div>
+
+    <el-form>
+        <el-form-item label="ID">
+            <el-select v-model="value" placeholder="Select">
+                <el-option
+                    v-for="item in options"
+                    :key="item"
+                    :label="item"
+                    :value="item"
+                />
+            </el-select>
+        </el-form-item>
+
+        <el-form-item class="ml-4">
+            <el-tag
+                v-for="tag in dynamicTags"
+                :key="tag"
+                class="mx-1"
+                closable
+                :disable-transitions="false"
+                @close="handleClose(tag)"
+            >
+                {{ tag }}
+            </el-tag>
+        </el-form-item>
+    </el-form>
+
+    <el-divider class="border-0 bg-[#ebebeb] my-5" />
+
+    <div class="flex items-center">
+        <h3 class="mr-5 font-bold">Повышенный кэшбек</h3>
+
+        <el-checkbox v-model="checked2" size="large" />
+    </div>
+
+    <el-divider class="border-0 bg-[#ebebeb] my-5" />
+
+    <h3 class="mr-5 font-bold">Условия по товарам</h3>
 </template>
 
 <script setup lang="ts">

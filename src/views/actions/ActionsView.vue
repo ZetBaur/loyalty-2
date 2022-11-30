@@ -13,7 +13,7 @@
         background
         layout="prev, pager, next"
         :total="1000"
-        class="mb-4"
+        class="mb-6"
     />
 
     <div class="flex">
@@ -21,10 +21,7 @@
             <TableCard @delete="deleteHandler" />
         </div> -->
 
-        <InfoCard
-            class="ml-[14px]"
-            @create-new-script="router.push('/flowpage')"
-        />
+        <InfoCard class="ml-5" @create-new-script="router.push('/flowpage')" />
     </div>
 </template>
 

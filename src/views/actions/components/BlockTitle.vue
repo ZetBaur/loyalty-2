@@ -9,7 +9,7 @@
         <CrossIcon class="cursor-pointer" />
     </div>
 
-    <hr class="h-[5px] bg-[#ebebeb] rounded-[5px] mb-[40px]" />
+    <el-divider class="bg-[#f4f4f4] h-1 border-0 rounded-lg my-10" />
 </template>
 
 <script setup lang="ts">

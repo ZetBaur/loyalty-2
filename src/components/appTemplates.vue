@@ -13,5 +13,9 @@
         create
     />
 
-    <hr class="h-[5px] bg-[#ebebeb] rounded-[5px] mb-[40px]" />
+    <!-- large -->
+    <el-divider class="bg-[#f4f4f4] h-2 border-0 rounded-lg my-6" />
+
+    <!-- small -->
+    <el-divider class="h-1 border-0 bg-[#ebebeb] rounded-lg mb-10" />
 </template>

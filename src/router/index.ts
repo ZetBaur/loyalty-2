@@ -27,7 +27,7 @@ const router = createRouter({
         {
             path: '/actions',
             name: 'actions',
-            component: () => import('@/views/actions/ActionsPage.vue'),
+            component: () => import('@/views/actions/ActionsView.vue'),
             meta: {
                 layout: 'main',
                 auth: false

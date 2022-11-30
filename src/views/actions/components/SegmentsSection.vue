@@ -1,5 +1,5 @@
 <template>
-    <div class="flex items-center justify-between mb-[25px]">
+    <div class="flex items-center justify-between mb-5">
         <h2 class="text-lg font-medium">Сегменты</h2>
 
         <div class="flex justify-between items-center">
@@ -15,10 +15,10 @@
         </div>
     </div>
 
-    <h3 class="font-medium mb-[30px]">Выбранные сегменты:</h3>
+    <h3 class="font-medium mb-5">Выбранные сегменты:</h3>
 
-    <div class="mb-[30px]">
-        <div class="flex justify-between items-center mb-[13px]">
+    <div class="mb-5">
+        <div class="flex justify-between items-center mb-2">
             <p>23 Мамочки с детьми 23.06.2002</p>
 
             <div class="flex items-center">
@@ -31,9 +31,10 @@
         <hr class="h-px bg-[#ebebeb]" />
     </div>
 
-    <hr class="h-[5px] bg-[#ebebeb] rounded-[5px] mb-7" />
+    <hr class="h-1 border-0 bg-[#ebebeb] rounded-lg mb-10" />
 </template>
 
-<script setup lang="ts"></script>
-
-<style lang="scss"></style>
+<script setup lang="ts">
+import EditIcon from '@/components/icons/EditIcon.vue';
+import DeleteIcon from '@/components/icons/DeleteIcon.vue';
+</script>
